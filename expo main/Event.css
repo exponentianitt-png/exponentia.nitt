@@ -1,0 +1,152 @@
+main {
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/EventBack.jpg);
+}
+
+.header-text {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 30px;
+   padding: 20px 0;
+   width: 100%;
+   height: 7vw;
+   margin-top: 10px;
+   
+}
+.header-text .button{
+   background-color:var(--accent-clr);
+   color: #ffffff;
+   text-decoration: none;
+   padding: 12px 20px;
+   border-radius: 4px;
+   font-weight: bold;
+}
+
+.Swiper {
+   width: 95%;
+   margin-top:90px;
+   margin-bottom: 20px;
+   padding-top: 50px;
+   padding-bottom: 50px;
+   align-items: center;
+   object-fit: contain;
+   overflow: hidden;
+}
+
+
+.swiper-slide {
+   overflow: hidden;
+   border-radius: .7rem;
+   height: 60rem;
+   width: 35rem;
+   background-position:center;
+   background-size:auto;
+   margin-right: 5px;
+}
+
+.swiper-slide img {
+   height: 100%;
+   width: 100%;
+   overflow: hidden;
+   max-height: 700px;
+   object-fit: contain;
+   padding: 2rem;
+}
+.swiper-slide img:hover {
+   transform: scale(1.1);
+   filter: brightness(0.7);
+   transition: transform 0.5s ease;
+   transition: filter 0.5s ease;
+}
+
+#gridhead{
+   color: var(--accent-clr);
+   font-size: 1.5rem;
+   line-height: 25px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 10px;
+}
+.deadline {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 15px;
+   margin-top: 20px;
+}
+.deadline-text {
+   width: 70%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   font-size: 1.2em;
+   line-height: 2.1em;
+   padding: 15px;
+   margin-top: 20px;
+   border: 1px solid var(--accent-clr);
+   border-radius: 10px;
+   background-color: rgba(0, 0, 0, 0.4);
+   letter-spacing: 1px;
+
+}
+.Events {
+   display: flex;
+   flex-direction: column;
+   padding: 15px;
+   margin-top: 20px;
+}
+
+.Events .content {
+   padding: 0 20px;
+   align-items: left;
+   padding: 25px 0px ;
+}
+
+
+.Events .content .text {
+   background-color: rgba(0, 0, 0, 0.5);
+   font-family: poppins;
+   padding: 0 25px;
+   font-size: 1.2rem;
+   line-height: 30px;
+   align-content: left;
+   border-radius: 30px;
+   padding: 20px 35px;
+}
+.Events .content .text .Eventname {
+   padding-bottom:10px;
+   font-family: Days One;
+   font-size: 32px;
+   font-weight: bolder;
+   color: white;
+}
+@media (max-width: 800px) { 
+   .header-text h1 {
+      font-size: 1.8rem;
+   }
+   .Events .content .text {
+      line-height: 25px;
+      font-size: 1rem;
+   }
+   .swiper-slide {
+      width: 27rem;
+   }
+   .swiper-slide img {
+      max-height: 500px;
+   }
+   .Events .content .text {
+      line-height: 25px;
+   }
+   .button {
+      font-size: 1.2rem;
+   }
+   #gridhead {
+      font-size: 1rem;
+   }
+   .deadline-text {
+      font-size: 0.7rem;
+   }
+}
