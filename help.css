@@ -24,44 +24,40 @@
 
 * {
     box-sizing: border-box; 
-    /* Important for padding not to break layout */
 }
 
 /* =========================================
    2. MAIN BACKGROUND
    ========================================= */
-/* --- Main Background --- */
-/* 1. Apply the background to the BODY so it covers everything */
 body {
     margin: 0;
     padding: 0;
     width: 100%;
-    min-height: 100vh; /* Ensures the page is at least as tall as the screen */
+    min-height: 100vh; 
     
-    /* Your Image Path */
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/Help_bg.png');
+    /* Updated path: removed 'images/' directory prefix */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Help_bg.png');
     
-    /* Sizing and Position */
-    background-size: cover;       /* Resize image to cover the screen */
-    background-position: center;  /* Center the image */
-    background-attachment: fixed; /* Keeps image locked in place when scrolling */
-    background-repeat: no-repeat; /* Prevents tiling */
+    background-size: cover;       
+    background-position: center;  
+    background-attachment: fixed; 
+    background-repeat: no-repeat; 
 }
 
-/* 2. Clean up the MAIN tag so it doesn't conflict */
 main {
     width: 100%;
     height: auto;
-    background: transparent; /* Ensure main doesn't hide the body background */
+    background: transparent; 
+    padding: 40px 20px;
 }
+
+/* Sidebar Styling */
 .sidebar {
     background: var(--sidebar-bg);
     backdrop-filter: blur(15px);        
     -webkit-backdrop-filter: blur(15px);
-    
     border-right: 1px solid rgba(255, 255, 255, 0.1); 
     box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3); 
-    
     position: fixed;
     top: 0;
     left: 0;
@@ -74,71 +70,23 @@ main {
     flex-direction: column;
 }
 
-.sidebar-header {
-    padding: 20px 25px;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--text-primary);
-    letter-spacing: 1px;
-    text-shadow: 0 0 15px var(--accent-glow);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
-}
-
-.sidebar a {
-    display: flex;
-    align-items: center;
-    padding: 15px 25px;
-    text-decoration: none;
-    font-family: 'Days One', sans-serif;
-    font-size: 1.1rem;
-    color: var(--text-secondary); 
-    transition: all 0.3s ease;
-    background: transparent;
-    border-left: 3px solid transparent; 
-}
-
-.sidebar a i, 
-.sidebar a svg {
-    margin-right: 15px;
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-    transition: color 0.3s ease;
-}
-
-.sidebar a:hover,
-.sidebar a.active {
-    color: #ffffff; 
-    background: linear-gradient(90deg, rgba(0, 242, 255, 0.15) 0%, transparent 100%);
-    border-left: 3px solid var(--accent-clr); 
-    text-shadow: 0 0 10px var(--accent-clr); 
-}
-
-.sidebar a:hover i,
-.sidebar a.active i {
-    color: var(--accent-clr); 
-    filter: drop-shadow(0 0 8px var(--accent-clr));
-}
-
 .main-content {
     margin-left: 250px; 
     transition: margin-left 0.3s ease;
     width: calc(100% - 250px); 
 }
 
-
-
 /* =========================================
    3. CONTACT WRAPPER
    ========================================= */
 .contact {
     height: auto;
-    background: transparent; /* Remove solid bg */
-    border-radius: 1em;
+    background: transparent; 
     display: flex;
     flex-direction: column;
     max-width: 1200px;
     margin: 0 auto;
+    gap: 30px;
 }
 
 /* =========================================
@@ -146,30 +94,29 @@ main {
    ========================================= */
 .faq {
     padding: 40px;
-    margin-bottom: 40px;
-    
-    /* GLASS EFFECT */
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: var(--glass-border);
-    box-shadow: var(--glass-shadow);
     border-radius: 20px;
-    
     color: var(--text-secondary);
 }
 
-.faq h3 {
+.faq h1 {
     color: var(--accent-clr);
-    margin-bottom: 20px;
-    font-size: 1.8rem;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
     text-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+}
+
+.faq ul {
+    padding-left: 0;
 }
 
 .faq li {
     margin-top: 20px;
-    line-height: 1.8;
-    list-style: none; /* Optional: Remove default bullets */
+    line-height: 1.6;
+    list-style: none; 
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding-bottom: 15px;
 }
@@ -177,8 +124,9 @@ main {
 .faq li strong {
     color: #fff;
     display: block;
-    margin-bottom: 5px;
-    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    font-family: 'Days One', sans-serif;
 }
 
 /* =========================================
@@ -186,14 +134,8 @@ main {
    ========================================= */
 .form-container {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
     padding: 30px;
-    margin-top: 20px;
-    
-    /* GLASS EFFECT */
-    background: rgba(20, 25, 40, 0.4); /* Slightly darker for form inputs */
+    background: rgba(20, 25, 40, 0.6); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: var(--glass-border);
@@ -208,42 +150,24 @@ main {
     text-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
 }
 
-/* Form Inputs (If you have them inside) */
-.form-container input, 
-.form-container textarea {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
 /* =========================================
    6. NEON BUTTON
    ========================================= */
 .button {
-    max-width: 150px;
-    display: inline-block;
-    
-    /* Transparent Style */
+    width: fit-content;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(4px);
     border: 1px solid var(--accent-clr);
     color: var(--accent-clr);
-    
     text-decoration: none;
-    padding: 12px 25px;
+    padding: 12px 35px;
     border-radius: 50px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 10px;
-    margin-bottom: 20px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
 }
 
 .button:hover {
@@ -256,22 +180,11 @@ main {
 /* =========================================
    7. IFRAME / GOOGLE FORM
    ========================================= */
-#contact-form {
-    display: none; /* Logic handled by JS presumably */
-}
-
-.form {
-    width: 100%;
-    height: auto;
-    padding: 10px 0;
-}
-
 .form iframe {
     width: 100%;
-    min-height: 500px;
+    min-height: 600px;
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     background: rgba(0,0,0,0.2);
 }
 
@@ -279,47 +192,93 @@ main {
    8. MAP CONTAINER (Glass Card)
    ========================================= */
 .map-container {
-    /* GLASS EFFECT */
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    
     border-radius: 20px;
-    padding: 30px;
+    padding: 40px;
     margin-top: 40px;
     color: #e2e8f0;
 }
 
-#map iframe {
-    width: 100%;
-    height: 400px; /* Set a fixed height for map */
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    filter: grayscale(80%) invert(90%); /* Cool Dark Mode Map Effect */
+.map-container h2 {
+    color: var(--accent-clr);
+    margin-bottom: 20px;
 }
 
-/* Hover to reveal map colors */
-#map iframe:hover {
+.map-container iframe {
+    width: 100%;
+    height: 450px; 
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 20px;
+    filter: grayscale(80%) invert(90%) contrast(90%); 
+}
+
+.map-container iframe:hover {
     filter: none;
     transition: filter 0.5s ease;
 }
 
 /* =========================================
-   9. MOBILE RESPONSIVE
+   9. MOBILE RESPONSIVE (Enhanced)
    ========================================= */
 @media (max-width: 800px) {
     main {
-        padding: 20px 10px;
-    }
-    
-    .faq, .form-container, .map-container {
-        padding: 20px;
-    }
-    
-    .button {
+        padding: 20px 10px 100px 10px; /* Extra bottom padding so sidebar doesn't block content */
+        margin-left: 0;
         width: 100%;
-        max-width: none;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: 65px;
+        bottom: 0;
+        top: auto;
+        flex-direction: row;
+        padding-top: 0;
+        justify-content: space-around;
+        align-items: center;
+        border-right: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-header {
+        display: none; /* Hide logo/text in mobile bar to save space */
+    }
+
+    .contact {
+        gap: 20px;
+    }
+
+    .faq {
+        padding: 25px 15px;
+    }
+
+    .faq h1 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .faq li strong {
+        font-size: 1.05rem;
+    }
+
+    .form-container, .map-container {
+        padding: 20px 15px;
+    }
+
+    .button {
+        width: 100%; /* Full width for better touch targets */
+        display: block;
+    }
+
+    .map-container iframe {
+        height: 300px;
+    }
+
+    .form iframe {
+        min-height: 450px;
     }
 }
