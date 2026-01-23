@@ -29,7 +29,7 @@ body {
     min-height: 100vh; /* Ensures the page is at least as tall as the screen */
     
     /* Your Image Path */
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/event_back.jpeg');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('event_back.jpeg');
     
     /* Sizing and Position */
     background-size: cover;       /* Resize image to cover the screen */
