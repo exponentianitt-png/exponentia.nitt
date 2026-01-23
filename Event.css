@@ -1,0 +1,636 @@
+/* =========================================
+   1. THEME VARIABLES (Updated for Glass Look)
+   ========================================= */
+:root {
+    /* Main Colors */
+    --bg-main: #0a0e17;           /* Deep Space Blue Background */
+    
+    /* Sidebar Background */
+    --sidebar-bg: rgba(20, 25, 40, 0.25); 
+    
+    --text-primary: #ffffff;      /* Pure White Text */
+    --text-secondary: #a0aec0;    /* Grey Text */
+    
+    /* Neon Accents */
+    --accent-clr: #00f2ff;        /* Neon Cyan */
+    --accent-glow: rgba(0, 242, 255, 0.6); /* Glowing effect */
+    --gradient-btn: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(20, 25, 40, 0.4); 
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --line-clr: #1f293a;
+}
+
+/* 1. Apply the background to the BODY so it covers everything */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh; /* Ensures the page is at least as tall as the screen */
+    
+    /* Your Image Path */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/event_back.jpeg');
+    
+    /* Sizing and Position */
+    background-size: cover;       /* Resize image to cover the screen */
+    background-position: center;  /* Center the image */
+    background-attachment: fixed; /* Keeps image locked in place when scrolling */
+    background-repeat: no-repeat; /* Prevents tiling */
+}
+
+/* 2. Clean up the MAIN tag so it doesn't conflict */
+main {
+    width: 100%;
+    height: auto;
+    background: transparent; /* Ensure main doesn't hide the body background */
+}
+
+/* CRITICAL FIX: Images will never overflow their container */
+img, svg {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3 {
+    font-family: 'Days One', sans-serif;
+    color: var(--text-primary);
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.2); 
+    margin: 0; 
+    padding-bottom: 10px;
+}
+
+/* =========================================
+   3. SIDEBAR NAVIGATION (Frosted Glass)
+   ========================================= */
+.sidebar {
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(15px);        
+    -webkit-backdrop-filter: blur(15px);
+    
+    border-right: 1px solid rgba(255, 255, 255, 0.1); 
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3); 
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px; 
+    padding-top: 20px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 20px 25px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+    text-shadow: 0 0 15px var(--accent-glow);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-family: 'Days One', sans-serif;
+    font-size: 1.1rem;
+    color: var(--text-secondary); 
+    transition: all 0.3s ease;
+    background: transparent;
+    border-left: 3px solid transparent; 
+}
+
+.sidebar a i, 
+.sidebar a svg {
+    margin-right: 15px;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    color: #ffffff; 
+    background: linear-gradient(90deg, rgba(0, 242, 255, 0.15) 0%, transparent 100%);
+    border-left: 3px solid var(--accent-clr); 
+    text-shadow: 0 0 10px var(--accent-clr); 
+}
+
+.sidebar a:hover i,
+.sidebar a.active i {
+    color: var(--accent-clr); 
+    filter: drop-shadow(0 0 8px var(--accent-clr));
+}
+
+.main-content {
+    margin-left: 250px; 
+    transition: margin-left 0.3s ease;
+    width: calc(100% - 250px); 
+}
+
+/* =========================================
+   4. LAYOUT & HEADER
+   ========================================= */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 0 10px; 
+}
+
+.header {
+    width: 100%;
+    height: 80px; 
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: flex-start;
+    padding-left: 20px;
+    background: linear-gradient(to bottom, rgba(10, 14, 23, 0.8), transparent);
+    position: relative;
+    z-index: 10;
+}
+
+.nit_logo img,
+.dep_logo img {
+    max-height: 50px; 
+    width: auto;
+    margin-right: 15px;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
+}
+
+/* --- HEADER TEXT & BUTTON FIX --- */
+.header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px 0;
+    width: 100%;
+    height: auto; 
+    
+    /* FIX 1: Increased margin so it doesn't hide behind the top logo bar */
+    margin-top: 100px; 
+    
+    /* FIX 2: Z-index ensures this container sits ON TOP of background */
+    position: relative;
+    z-index: 10; 
+    
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.header-text .button {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid var(--accent-clr);
+    
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    /* FIX 3: Force the button to be clickable */
+    position: relative; 
+    z-index: 20; 
+    cursor: pointer;
+    
+    flex-shrink: 0;
+    white-space: nowrap; 
+}
+
+.header-text .button:hover {
+    background-color: var(--accent-clr);
+    box-shadow: 0 0 15px var(--accent-clr);
+    transform: translateY(-2px);
+}
+
+.center-svg {
+    max-width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0 0 10px var(--accent-glow)); 
+}
+
+/* =========================================
+   5. SECTIONS (Events, Deadline, Etc.)
+   ========================================= */
+.Swiper {
+    width: 95%;
+    margin-top: 90px;
+    margin-bottom: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    align-items: center;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    overflow: hidden;
+    border-radius: 1rem;
+    height: 60rem;
+    width: 35rem;
+    background-position: center;
+    background-size: auto;
+    margin-right: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.swiper-slide img {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    max-height: 700px;
+    object-fit: contain;
+    padding: 2rem;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.swiper-slide img:hover {
+    transform: scale(1.05); 
+    filter: drop-shadow(0 0 10px var(--accent-clr)); 
+}
+
+#gridhead {
+    color: var(--accent-clr);
+    font-size: 1.5rem;
+    line-height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.deadline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.deadline-text {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 2.1em;
+    padding: 25px;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border-radius: 15px;
+    letter-spacing: 1px;
+    color: #eee;
+}
+
+.Events {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.Events .content {
+    padding: 0 20px;
+    align-items: left;
+    padding: 25px 0px;
+}
+
+.Events .content .text {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    font-family: poppins;
+    padding: 30px 35px; 
+    font-size: 1.2rem;
+    line-height: 30px;
+    align-content: left;
+    border-radius: 20px; 
+    color: #f0f0f0;
+}
+
+.Events .content .text .Eventname {
+    padding-bottom: 15px;
+    font-family: 'Days One', sans-serif;
+    font-size: 32px;
+    font-weight: bolder;
+    color: var(--accent-clr); 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.1); 
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+/* =========================================
+   6. EXTRA SECTIONS (About, Sponsors, Etc)
+   ========================================= */
+#aboutus {
+    background: linear-gradient(to bottom, var(--bg-main), rgba(10, 14, 23, 0.8), var(--bg-main)), 
+                url('images/math_dep.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 60px 20px;
+    border-top: 1px solid var(--line-clr);
+    border-bottom: 1px solid var(--line-clr);
+}
+
+#sponsors {
+    background: linear-gradient(to bottom, var(--bg-main), rgba(0,0,0,0.6)),
+                url("images/Sponsor_back.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 50px 0;
+}
+
+.title-partner h1 {
+    margin-bottom: 60px;
+    font-size: 3vw;
+    padding-top: 20px;
+    color: var(--accent-clr);
+}
+
+.tenali-logo {
+    width: 100%;
+    max-width: 400px; 
+    height: auto;
+    display: block;
+    margin: 0 auto 70px auto;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.15));
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px; 
+    margin: 0 auto;
+    width: 100%; 
+}
+
+.image-container img {
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+    filter: grayscale(80%); 
+    opacity: 0.8;
+}
+
+.image-container img:hover {
+    filter: grayscale(0%); 
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.associate-partners h1 { font-size: 2.5vw; padding-top: 20px; }
+.Recognition-partners h1 { font-size: 1.7vw; padding-top: 20px; }
+
+/* Speaker Cards */
+.speaker {
+    background: linear-gradient(rgba(10, 14, 23, 0.9), rgba(10, 14, 23, 0.9)), 
+                url('images/mathback.jpg');
+    background-size: cover;
+    padding: 40px 20px;
+    margin-top: 50px;
+}
+
+.speakerhead {
+    display: flex;
+    width: 100%;
+    font-size: 3rem; 
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    color: var(--accent-clr);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.spcontainer1, .spcontainer2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto;
+    max-width: 1100px; 
+    width: 100%; 
+    padding: 30px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.spcontainer1 { flex-direction: row; }
+.spcontainer2 { flex-direction: row-reverse; }
+
+.spcontainer1 .speakertex1, 
+.spcontainer2 .speakertext2 {
+    width: 60%;
+    padding: 0 40px;
+    text-align: left;
+    color: #e2e8f0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.spcontainer1 .speakerimg1,
+.spcontainer2 .speakerimg2 {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.spcontainer1 img,
+.spcontainer2 img {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 15px;
+    border: 2px solid var(--accent-clr);
+    box-shadow: 0 0 25px rgba(0, 242, 255, 0.15);
+}
+
+/* =========================================
+   7. RESPONSIVE DESIGN (Mobile)
+   ========================================= */
+@media (max-width: 800px) {
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding-bottom: 90px; 
+    }
+
+    /* FIXED BOTTOM BAR SIDEBAR */
+    .sidebar {
+        width: 100%; 
+        height: auto; 
+        position: fixed; 
+        bottom: 0; 
+        top: auto; 
+        left: 0;
+        background: rgba(10, 14, 23, 0.98);
+        backdrop-filter: blur(20px);
+        border-right: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.2); 
+        flex-direction: row; 
+        justify-content: space-around; 
+        align-items: center;
+        padding: 10px 0;
+        z-index: 9999; 
+    }
+
+    .sidebar-header { display: none; }
+
+    .sidebar a {
+        padding: 5px;
+        font-size: 0.75rem; 
+        flex-direction: column; 
+        text-align: center;
+        border-left: none; 
+        width: 100%;
+    }
+    
+    .sidebar a i, .sidebar a svg {
+        margin-right: 0;
+        margin-bottom: 5px;
+        font-size: 1.4rem; 
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+        border-left: none;
+        background: transparent; 
+        color: var(--accent-clr);
+    }
+    
+    /* Mobile Header Text Fix */
+    .header-text {
+        margin-top: 85px; 
+    }
+    
+    .header-text h1 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    
+    .center-svg { max-width: 90%; }
+    
+    .button { font-size: 1.1rem; }
+
+    .title-partner h1 { 
+        font-size: 1.8rem !important; 
+        margin-bottom: 30px; 
+    }
+    
+    .associate-partners h1,
+    .Recognition-partners h1 { 
+        font-size: 1.4rem; 
+    }
+
+    .speakerhead { 
+        font-size: 2rem; 
+        margin: 30px 0; 
+        text-align: center;
+    }
+
+    .spcontainer1, .spcontainer2 {
+        flex-direction: column !important; 
+        padding: 20px;
+        margin: 20px auto;
+        width: 90%; 
+    }
+
+    .spcontainer1 .speakerimg1,
+    .spcontainer2 .speakerimg2 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .spcontainer1 img,
+    .spcontainer2 img {
+        max-width: 200px; 
+    }
+
+    .spcontainer1 .speakertex1,
+    .spcontainer2 .speakertext2 {
+        width: 100%;
+        padding: 0;
+        text-align: center;
+        font-size: 1rem;
+    }
+    
+    .header { 
+        padding-left: 10px; 
+        height: 60px; 
+    }
+    
+    .nit_logo img, .dep_logo img {
+        max-height: 40px;
+        margin-right: 10px;
+    }
+    
+    .image-container img {
+        max-width: 150px; 
+        margin: 10px;
+    }
+    
+    .Events .content .text {
+        line-height: 25px;
+        font-size: 1rem;
+        padding: 20px;
+    }
+    
+    .swiper-slide {
+        width: 80vw;
+        height: auto;
+    }
+    
+    .swiper-slide img {
+        max-height: 500px;
+    }
+    
+    #gridhead {
+        font-size: 1rem;
+    }
+    
+    .deadline-text {
+        width: 90%;
+        font-size: 0.9rem;
+        padding: 15px;
+    }
+}

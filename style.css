@@ -1,0 +1,427 @@
+/* =========================================
+   1. VARIABLES & FONTS
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Days+One&display=swap');
+
+:root {
+  /* THEME COLORS */
+  --base-clr: #0a0e17;       /* Deep Space Background */
+  --sidebar-bg: #0f131f;     /* Slightly lighter for Sidebar visibility */
+  --line-clr: #1f293a;       /* Border Color */
+  --hover-clr: #1a202c;      /* Hover State */
+  --text-clr: #ffffff;       /* Main Text */
+  --secondary-text-clr: #a0aec0;
+  --accent-clr: #00f2ff;     /* Neon Cyan Accent */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5rem;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--base-clr);
+  color: var(--text-clr);
+  display: grid;
+  grid-template-columns: auto 1fr; 
+  grid-template-rows: 1fr auto;
+  grid-template-areas: 
+    "sidebar main"
+    "sidebar footer";
+}
+
+h1, h2, h3 {
+  font-family: 'Days One', sans-serif;
+  color: var(--text-clr);
+}
+
+/* =========================================
+   2. SIDEBAR SECTION
+   ========================================= */
+#sidebar {
+  grid-area: sidebar;
+  height: 100vh;
+  width: 250px;
+  padding: 20px 15px;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--line-clr);
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: visible; 
+  overflow-x: visible; 
+  z-index: 100;
+  transition: width 0.3s ease, padding 0.3s ease;
+  white-space: nowrap;
+}
+
+#sidebar ul {
+  list-style: none;
+  width: 100%;
+}
+
+/* Ensure LI is relative so we can position submenus absolutely relative to it */
+#sidebar ul li {
+  position: relative; 
+}
+
+/* --- LOGO & TOGGLE HEADER --- */
+#sidebar > ul > li:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding: 0 5px;
+  height: 50px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-clr);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  transition: opacity 0.3s;
+}
+
+.logo i, .logo img {
+  min-width: 30px;
+  font-size: 1.8rem;
+  color: var(--accent-clr);
+}
+
+/* --- TOGGLE BUTTON --- */
+#toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--secondary-text-clr);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+#toggle-btn:hover {
+  color: var(--accent-clr);
+  background: rgba(0, 242, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+  transform: rotate(180deg);
+}
+
+/* --- SIDEBAR LINKS --- */
+#sidebar a,
+#sidebar .dropdown-btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 5px;
+  text-decoration: none;
+  color: var(--secondary-text-clr);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: transparent;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+#sidebar svg {
+  min-width: 20px;
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  fill: var(--secondary-text-clr);
+  transition: all 0.3s ease;
+}
+
+#sidebar a:hover,
+#sidebar .dropdown-btn:hover {
+  background-color: var(--hover-clr);
+  color: var(--text-clr);
+}
+
+#sidebar a:hover svg {
+  fill: var(--text-clr);
+}
+
+#sidebar ul li.active a {
+  background-color: rgba(0, 242, 255, 0.1);
+  color: var(--accent-clr);
+  font-weight: 600;
+}
+#sidebar ul li.active a svg {
+  fill: var(--accent-clr);
+}
+
+/* Submenu Logic (Standard Open State) */
+#sidebar .sub-menu {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 300ms ease-in-out;
+  padding-left: 10px;
+}
+#sidebar .sub-menu.show { grid-template-rows: 1fr; }
+#sidebar .sub-menu > div { overflow: hidden; }
+#sidebar .sub-menu a { padding-left: 45px; font-size: 0.9em; }
+
+
+/* =========================================
+   3. CLOSED STATE (Minimization)
+   ========================================= */
+
+#sidebar.close {
+  width: 80px;
+  padding: 20px 10px;
+}
+
+#sidebar.close > ul > li:first-child {
+  justify-content: center;
+}
+
+#sidebar.close .logo .logo_name,
+#sidebar.close .logo {
+  display: none;
+}
+
+#sidebar.close a, 
+#sidebar.close .dropdown-btn {
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#sidebar.close svg { margin-right: 0; }
+
+/* Hide TEXT labels in closed state */
+#sidebar.close a span, 
+#sidebar.close .dropdown-btn span {
+  display: none;
+}
+
+/* --- FLYOUT LOGIC --- */
+#sidebar.close .sub-menu {
+  position: absolute;
+  left: 100%; 
+  top: 0;
+  margin-top: 0;
+  padding: 10px;
+  border-radius: 0 10px 10px 10px;
+  background-color: var(--sidebar-bg);
+  border: 1px solid var(--line-clr);
+  border-left: 5px solid var(--accent-clr);
+  width: 200px;
+  display: none; 
+  grid-template-rows: 1fr; 
+  height: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+#sidebar.close li:hover .sub-menu {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+#sidebar.close .sub-menu > div {
+  overflow: visible;
+}
+
+#sidebar.close .sub-menu a {
+  padding-left: 15px; 
+  font-size: 0.9rem;
+  justify-content: flex-start; 
+  color: var(--secondary-text-clr);
+}
+
+#sidebar.close .sub-menu a span {
+  display: inline-block; 
+}
+
+
+/* =========================================
+   4. MAIN CONTENT & FOOTER
+   ========================================= */
+main {
+  grid-area: main;
+  padding: 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line-clr);
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+footer {
+  grid-area: footer;
+  background-color: var(--base-clr);
+  border-top: 1px solid var(--line-clr);
+  padding: 50px 0 20px;
+  margin-top: auto;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 20px;
+}
+
+.footer-column h3 {
+  color: var(--accent-clr);
+  margin-bottom: 15px;
+}
+
+.footer-column ul li a {
+  color: var(--secondary-text-clr);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: var(--accent-clr);
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid var(--line-clr);
+  padding-top: 20px;
+  margin-top: 20px;
+  color: var(--secondary-text-clr);
+  font-size: 0.8rem;
+}
+
+/* =========================================
+   5. MOBILE RESPONSIVE
+   ========================================= */
+@media (max-width: 800px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto auto;
+    grid-template-areas: 
+      "main"
+      "footer"
+      "sidebar"; 
+  }
+
+  /* Reset Sidebar for Mobile */
+  #sidebar, 
+  #sidebar.close {
+    width: 100%;
+    height: 60px;
+    flex-direction: row;
+    padding: 0;
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    border-right: none;
+    border-top: 1px solid var(--line-clr);
+    overflow: visible; 
+  }
+
+  #sidebar ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+  }
+  
+  #sidebar li {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: static; 
+  }
+
+  #sidebar > ul > li:first-child {
+    display: none !important; 
+  }
+
+  /* --- FIX: Display Logo (Icon) then Text (Side-by-Side) --- */
+  #sidebar a, 
+  #sidebar .dropdown-btn {
+    flex-direction: row; /* CHANGED: Row instead of Column */
+    justify-content: center;
+    padding: 5px;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+    font-size: 0.8rem; /* Slight size bump for readability */
+    gap: 8px; /* Add spacing between Icon and Text */
+  }
+
+  #sidebar .sub-menu {
+    position: absolute;
+    bottom: 60px; 
+    left: 0;
+    width: 100%;
+    background: var(--sidebar-bg);
+    border-top: 1px solid var(--accent-clr);
+    padding: 10px;
+    display: none; 
+  }
+
+  #sidebar li:hover .sub-menu,
+  #sidebar li:focus-within .sub-menu {
+      display: block;
+      grid-template-rows: 1fr;
+  }
+  
+  #sidebar .sub-menu a {
+      padding-left: 0;
+      text-align: center;
+      justify-content: center;
+      padding: 10px;
+  }
+
+  #sidebar a span,
+  #sidebar.close a span, 
+  #sidebar.close .dropdown-btn span {
+      display: block;
+  }
+
+  /* --- FIX: Reset SVG margins for side-by-side layout --- */
+  #sidebar svg,
+  #sidebar.close svg {
+    margin-right: 0; /* Reset */
+    margin-bottom: 0; /* No bottom margin needed in row mode */
+    width: 20px;
+    height: 20px;
+  }
+}

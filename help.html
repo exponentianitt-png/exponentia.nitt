@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="help.css">
+    <script type="text/javascript" src="app.js" defer></script>
+</head>
+
+<body>
+    <nav id="sidebar">
+        <ul>
+            <li>
+                <span class="logo">Exponentia</span>
+                <button onclick=toggleSidebar() id="toggle-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z" />
+                    </svg>
+                </button>
+            </li>
+            <li>
+                <a href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+                    </svg>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="index.html#aboutus">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                    </svg>
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <button onclick=toggleSubMenu(this) class="dropdown-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path d="M280-120v-80h160v-124q-49-11-87.5-41.5T296-442q-75-9-125.5-65.5T120-640v-40q0-33 23.5-56.5T200-760h80v-80h400v80h80q33 0 56.5 23.5T840-680v40q0 76-50.5 132.5T664-442q-18 46-56.5 76.5T520-324v124h160v80H280Zm0-408v-152h-80v40q0 38 22 68.5t58 43.5Zm200 128q50 0 85-35t35-85v-240H360v240q0 50 35 85t85 35Zm200-128q36-13 58-43.5t22-68.5v-40h-80v152Zm-200-52Z" />
+                    </svg>
+                    <span>Events</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z" />
+                    </svg>
+                </button>
+                <ul class="sub-menu">
+                    <div>
+                        <li><a href="online_events.html">Online</a></li>
+                        <li><a href="offline_events.html">Offline</a></li>
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a href="people.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path d="M40-160v-112q0-34 17.5-62.5T106-378q62-31 126-46.5T360-440q64 0 128 15.5T614-378q31 15 48.5 43.5T680-272v112H40Zm720 0v-120q0-44-24.5-84.5T666-434q51 6 96 20.5t84 35.5q26 13 40 34.5t14 47.5v96H760ZM360-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm400-160q0 66-47 113t-113 47q-11 0-21-1.5t-19-4.5q23-30 36.5-65t13.5-73q0-38-13.5-73T560-762q9-3 19-4.5t21-1.5q66 0 113 47t47 113ZM120-240h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9-5-14.5-14t-5.5-20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0 0Z"/>
+                    </svg>
+                    <span>Peoples</span>
+                </a>
+            </li>
+            <li>
+                <a href="merch.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path d="m240-522-40 22q-14 8-30 4t-24-18L66-654q-8-14-4-30t18-24l230-132h70q9 0 14.5 5.5T400-820v20q0 33 23.5 56.5T480-720q33 0 56.5-23.5T560-800v-20q0-9 5.5-14.5T580-840h70l230 132q14 8 18 24t-4 30l-80 140q-8 14-23.5 17.5T760-501l-40-20v361q0 17-11.5 28.5T680-120H280q-17 0-28.5-11.5T240-160v-362Zm80-134v456h320v-456l124 68 42-70-172-100q-15 51-56.5 84.5T480-640q-56 0-97.5-33.5T326-758L154-658l42 70 124-68Zm160 177Z" />
+                    </svg>
+                    <span>Merch</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="help.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z" />
+                    </svg>
+                    <span>Help</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <div class="contact">
+            <div class="faq">
+                <h1>FAQ</h1>
+                <ul>
+                    <li><strong>Will food be provided?</strong><br>   
+                        Yes, food will be provided with a basic fare.</li>
+
+                    <li><strong>Do we get free accommodation?</strong><br>   
+                        Limited hostel accommodation is available for an extra charge of 150 rupees. It is allocated on
+                        a first-come, first-served basis.</li>
+
+                    <li><strong>If we miss our online registration, can we register on the spot?</strong><br>   
+                        On-spot registration may be available, but it will be subject to availability. Please check with
+                        the event coordinators in advance.</li>
+
+                    <li><strong>Will you provide the props required for events like the Rubik's cube
+                            competition?</strong><br>   
+                        Yes, the necessary props will be provided for the events.</li>
+
+                    <li><strong>Is there a specific format for PowerPoint (PPT) presentations?</strong><br>   
+                        Yes, PowerPoint presentations should follow the prescribed format. More details regarding the
+                        template, time limits, and submission process will be shared with registered participants.</li>
+
+                    <li><strong>Can students from different departments participate?</strong><br>   
+                        Yes, students from all departments are welcome to participate. However, the talks and paper
+                        presentation competition will be subject-specific.</li>
+
+                    <li><strong>Can students from different colleges form a team?</strong><br>   
+                        Yes, inter-college teams are allowed.</li>
+
+                    <li><strong>What happens if I arrive late?</strong><br>   
+                        Late entry will be allowed until 10:30 AM. For lectures, you must inform one of the coordinators
+                        in advance.</li>
+
+                    <li><strong>Whom should I contact for more information?</strong><br>   
+                        You can contact the event coordinators. Their contact details will be provided in the event
+                        brochure.</li>
+
+                    <li><strong>Do we need to follow a specific dress code?</strong><br>   
+                        There is no fixed dress code; however, participants are expected to maintain proper decorum.
+                    </li>
+
+                    <li><strong>Are there any participation certificates?</strong><br>   
+                        Yes,certificates will be provided to the winners of each event</li>
+
+                    <li><strong>Will there be any travel reimbursement?</strong><br>   
+                        No, travel expenses will not be reimbursed.</li>
+
+                    <li><strong>Is there a limit to the number of events I can participate in?</strong><br>      Some
+                        events may have participation limits. Please refer to the event guidelines for more
+                        details.</li>
+                </ul>
+
+            </div>
+            <div class="form-container">
+                <h4>Still need help?</h4>
+                <div class="button" onclick="toggleform()">
+                    <a>Contact us</a>
+                </div>
+                <div class="form" id="contact-form">
+                    <iframe
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSeQ0A-uRhws-h1R0BONbG39pPWPnNBQy1-WhP4LPtqwbLb4gA/viewform?embedded=true"
+                        frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="map-container" id="map">
+            <h2>How To Reach NIT?</h2>
+
+            <p>
+                The <strong>National Institute of Technology (NIT) Trichy</strong> is located on the <em>Trichy-Tanjore
+                    Highway (NH 67)</em>, approximately 20 kilometers from the main city of Tiruchirappalli (Trichy).
+                The campus is well-connected by various modes of transport, making it accessible for students and
+                visitors. Below are the available travel options:
+            </p>
+
+            <ul>
+                <li><strong>By Bus:</strong>
+                    <ul>
+                        <li>You can take <strong>Bus No. 128</strong> from the <em>Central Bus Stand (CBS)</em> to reach
+                            NIT Trichy.</li>
+                        <li>Alternatively, you can board any <strong>Thanjavur-bound bus</strong> from CBS, as they pass
+                            through the NIT stop.</li>
+                        <li>The journey typically takes about <strong>40 minutes</strong>, depending on traffic
+                            conditions.</li>
+                    </ul>
+                </li>
+
+                <li><strong>By Train:</strong>
+                    <ul>
+                        <li>The nearest railway station is <strong>Tiruchirappalli Junction (TPJ)</strong>, which is
+                            well connected to major cities.</li>
+                        <li>From the station, you can hire a taxi or take a local bus to NIT Trichy.</li>
+                    </ul>
+                </li>
+
+                <li><strong>By Auto-Rickshaw or Taxi:</strong>
+                    <ul>
+                        <li>Auto-rickshaws are available near CBS and the railway station. It is advisable to negotiate
+                            the fare beforehand.</li>
+                        <li>Taxi services, including ride-hailing options like Ola and Uber, are also available for a
+                            more comfortable journey.</li>
+                    </ul>
+                </li>
+
+                <li><strong>By Air:</strong>
+                    <ul>
+                        <li>The nearest airport is <strong>Tiruchirappalli International Airport (TRZ)</strong>, located
+                            about 25 km from NIT.</li>
+                        <li>From the airport, taxis and app-based cab services are available for direct transport to the
+                            campus.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p>
+                For further assistance, visitors can contact the NIT Trichy help desk or refer to local transport
+                authorities for updated schedules and fares.
+            </p>
+
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.7092733488676!2d78.81073327192853!3d10.756874759560436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa8d48c8059d85%3A0x1a868fb4a5a73a10!2sNITT%20Main%20Gate!5e0!3m2!1sen!2sin!4v1738863295589!5m2!1sen!2sin"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Social Media</h3>
+                <ul>
+                    <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.linkedin.com/company/inphynitt/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/inphynitt_/" target="_blank">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Other Links</h3>
+                <ul>
+                    <li><a href="https://forms.gle/CX3kpBeyUKQnbPbz8" target="_blank">Registration</a></li>
+                    <li><a href="merch.html" target="_blank">Merch</a></li>
+                    <li><a href="help.html" target="_blank">Contact us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 EXPONENTIA. All rights reserved</p>
+        </div>
+    </footer>
+</body>
+
+</html>

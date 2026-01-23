@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exponentia</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Event.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script type="text/javascript" src="app.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+    <nav id="sidebar">
+        <ul>
+
+            <li>
+
+                <span class="logo">Exponentia</span>
+                <button onclick=toggleSidebar() id="toggle-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path
+                            d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z" />
+                    </svg>
+                </button>
+            </li>
+            <li>
+                <a href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path
+                            d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+                    </svg>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="index.html#aboutus">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path
+                            d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                    </svg>
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <button onclick=toggleSubMenu(this) class="dropdown-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path
+                            d="M280-120v-80h160v-124q-49-11-87.5-41.5T296-442q-75-9-125.5-65.5T120-640v-40q0-33 23.5-56.5T200-760h80v-80h400v80h80q33 0 56.5 23.5T840-680v40q0 76-50.5 132.5T664-442q-18 46-56.5 76.5T520-324v124h160v80H280Zm0-408v-152h-80v40q0 38 22 68.5t58 43.5Zm200 128q50 0 85-35t35-85v-240H360v240q0 50 35 85t85 35Zm200-128q36-13 58-43.5t22-68.5v-40h-80v152Zm-200-52Z" />
+                    </svg>
+                    <span>Events</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path
+                            d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z" />
+                    </svg>
+                </button>
+                <ul class="sub-menu">
+                    <div>
+                        <li class="active"><a href="online_events.html">Online</a></li>
+                        <li><a href="offline_events.html">Offline</a></li>
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a href="people.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path d="M40-160v-112q0-34 17.5-62.5T106-378q62-31 126-46.5T360-440q64 0 128 15.5T614-378q31 15 48.5 43.5T680-272v112H40Zm720 0v-120q0-44-24.5-84.5T666-434q51 6 96 20.5t84 35.5q26 13 40 34.5t14 47.5v96H760ZM360-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm400-160q0 66-47 113t-113 47q-11 0-21-1.5t-19-4.5q23-30 36.5-65t13.5-73q0-38-13.5-73T560-762q9-3 19-4.5t21-1.5q66 0 113 47t47 113ZM120-240h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9-5-14.5-14t-5.5-20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0 0Z"/>
+                    </svg>
+                    <span>Peoples</span>
+                </a>
+            </li>
+            <li>
+                <a href="merch.html">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path
+                            d="m240-522-40 22q-14 8-30 4t-24-18L66-654q-8-14-4-30t18-24l230-132h70q9 0 14.5 5.5T400-820v20q0 33 23.5 56.5T480-720q33 0 56.5-23.5T560-800v-20q0-9 5.5-14.5T580-840h70l230 132q14 8 18 24t-4 30l-80 140q-8 14-23.5 17.5T760-501l-40-20v361q0 17-11.5 28.5T680-120H280q-17 0-28.5-11.5T240-160v-362Zm80-134v456h320v-456l124 68 42-70-172-100q-15 51-56.5 84.5T480-640q-56 0-97.5-33.5T326-758L154-658l42 70 124-68Zm160 177Z" />
+                    </svg>
+                    <span>Merch</span>
+                </a>
+            </li>
+            <li>
+                <a href="help.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path
+                            d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z" />
+                    </svg>
+                    <span>Help</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <div class="header-text" id="hdr">
+            <h1>Showcase your creativity!</h1>
+            <h1>Register Now</h1>
+            <a href="https://forms.gle/CX3kpBeyUKQnbPbz8" class="button">Register</a>
+        </div>
+
+        <div class="Swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="#reelmaker"><img src="images/Reel Making.png" /></a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#mememaker"><img src="images/Meme Contest.png" /></a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#photography"><img src="images/Photography.png" /></a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#postermaker"><img src="images/Poster Making.png" /></a>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <div id="gridhead">
+            <h1>Our Online Events</h1>
+        </div>
+        <div class="deadline">
+            <div class="deadline-text">
+                <h2>Registration/Submission deadline:<br> 20th feb 2026 12:00PM</h2>
+            </div>
+        </div>
+        <div class="Events">
+
+            <div class="content" id="reelmaker">
+                <div class="text">
+                    <p class="Eventname">Reel maker</p>
+                    <p style="font-weight: bold;">
+                        Entry Fees: 49/- <br>
+                        Winning Prize:500/-<br>
+                        Participation: Individual <br>
+                        Theme: "Pysics around us"<br><br>
+                        <i>Rules:</i>
+                    </p>
+                    <p>
+                    <ul style="margin-left: 25px;">
+                        <li>Each participant must produce a creative and original reel on their selected topic.</li>
+                        <li>Convey to the viewer, a concept of physics through any means you choose. Visual representation is preferred.</li>
+                        <li>The reel must not exceed 1 minute.</li>
+                        <li>The video must be submitted within the deadline; late submissions will not be accepted</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="content" id="mememaker">
+                <div class="text">
+                    <p class="Eventname">Meme maker</p>
+                    <p style="font-weight: bold;">
+                        Entry Fees: 49/- <br>
+                        Winning Prize:500/-<br>
+                        Participation: Individual<br>
+                        Themes: "Dual Nature of Light" / "Gravity"<br><br>
+                        <i>Rules:</i>
+                    </p>
+                    <p>
+                    <ul style="margin-left: 25px;">
+                        <li>One meme per contestant needs to be submitted.</li>
+                        <li>Each participant must create a creative and original meme based on the selected topic.</li>
+                        <li>The meme must be submitted within the deadline; late submissions will not be accepted.</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="content" id="photography">
+                <div class="text">
+                    <p class="Eventname">Photography</p>
+                    <p style="font-weight: bold;">
+                        Entry Fees: 49/- <br>
+                        Winning Prize:500/-<br>
+                        Participation: Individual<br>
+                        Theme: "Nature's creation"<br><br>
+                        <i>Rules:</i>
+                    </p>
+                    <p>
+                    <ul style="margin-left: 25px;">
+                        <li>Each participant must capture a creative and original Photo on their selected topic.</li>
+                        <li>Both raw and edited copies of the same image should be submitted before the deadline.
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="content" id="postermaker">
+                <div class="text">
+                    <p class="Eventname">Poster maker</p>
+                    <p style="font-weight: bold;">
+                        Entry Fees: 49/- <br>
+                        Winning Prize:500/-<br>
+                        Participation: Individual<br>
+                        Theme: "Interstellar"<br><br>
+                        <i>Rules:</i>
+                    </p>
+                    <p>
+                    <ul style="margin-left: 25px;">
+                        <li>One poster per contestant needs to be submitted.</li>
+                        <li>Each participant must upload a creative and original poster on their selected topic.</li>
+                        <li>The poster must be submitted within the given deadline; late submissions will not be accepted.</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Social Media</h3>
+                <ul>
+                    <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.linkedin.com/company/inphynitt/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/inphynitt_/" target="_blank">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="https://forms.gle/CX3kpBeyUKQnbPbz8" target="_blank">Registration</a></li>
+                    <li><a href="merch.html" target="_blank">Merch</a></li>
+                    <li><a href="help.html" target="_blank">Contact us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 EXPONENTIA. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
