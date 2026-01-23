@@ -1,9 +1,6 @@
 /* =========================================
    1. THEME VARIABLES (Updated for Glass Look)
    ========================================= */
-/* =========================================
-   1. THEME VARIABLES (Updated for Glass Look)
-   ========================================= */
 :root {
     /* Main Colors */
     --bg-main: #0a0e17;           /* Deep Space Blue Background */
@@ -30,25 +27,23 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    min-height: 100vh; /* Ensures the page is at least as tall as the screen */
+    min-height: 100vh; 
     
-    /* Your Image Path */
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/event_back.jpeg');
+    /* Updated path */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('event_back.jpeg');
     
-    /* Sizing and Position */
-    background-size: cover;       /* Resize image to cover the screen */
-    background-position: center;  /* Center the image */
-    background-attachment: fixed; /* Keeps image locked in place when scrolling */
-    background-repeat: no-repeat; /* Prevents tiling */
+    background-size: cover;       
+    background-position: center;  
+    background-attachment: fixed; 
+    background-repeat: no-repeat; 
 }
 
 /* 2. Clean up the MAIN tag so it doesn't conflict */
 main {
     width: 100%;
     height: auto;
-    background: transparent; /* Ensure main doesn't hide the body background */
+    background: transparent; 
 }
-
 
 /* CRITICAL FIX: Images will never overflow their container */
 img, svg {
@@ -59,19 +54,19 @@ img, svg {
 h1, h2, h3 {
     font-family: 'Days One', sans-serif;
     color: var(--text-primary);
-    text-shadow: 0 0 15px rgba(0, 242, 255, 0.2); /* Subtle neon glow on text */
-    margin: 0; /* Reset margins for better control */
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.2); 
+    margin: 0; 
     padding-bottom: 10px;
 }
 
 /* =========================================
-timer
+   TIMER
    ========================================= */
 .timer-card {
-    background: rgba(255, 255, 255, 0.1); /* Transparent white */
-    backdrop-filter: blur(10px); /* Blurs the background behind the card */
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px); 
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Soft border */
+    border: 1px solid rgba(255, 255, 255, 0.2); 
     border-radius: 20px;
     padding: 2rem;
     margin: 20px auto;
@@ -97,7 +92,7 @@ timer
     font-size: 3rem;
     font-weight: bold;
     color: #ffffff;
-    font-family: 'Courier New', Courier, monospace; /* Monospaced keeps numbers from jumping */
+    font-family: 'Courier New', Courier, monospace; 
 }
 
 .time-segment .label {
@@ -108,27 +103,21 @@ timer
     margin-top: 5px;
 }
 
-/* Responsive adjustment for mobile */
 @media (max-width: 600px) {
     .timer-grid { gap: 10px; }
     .time-segment span { font-size: 1.8rem; }
     .time-segment { min-width: 60px; }
 }
 
-
-
 /* =========================================
    3. SIDEBAR NAVIGATION (Frosted Glass)
    ========================================= */
-
 .sidebar {
     background: var(--sidebar-bg);
     backdrop-filter: blur(15px);        
     -webkit-backdrop-filter: blur(15px);
-    
     border-right: 1px solid rgba(255, 255, 255, 0.1); 
     box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3); 
-    
     position: fixed;
     top: 0;
     left: 0;
@@ -193,7 +182,6 @@ timer
     width: calc(100% - 250px); 
 }
 
-
 /* =========================================
    4. LAYOUT UTILITIES
    ========================================= */
@@ -203,7 +191,7 @@ timer
     align-items: center;
     text-align: center;
     width: 100%;
-    padding: 0 10px; /* Safety padding */
+    padding: 0 10px; 
 }
 
 .center-svg {
@@ -223,7 +211,6 @@ timer
     align-items: center; 
     justify-content: flex-start;
     padding-left: 20px;
-    /* Updated header to match glass theme */
     background: linear-gradient(to bottom, rgba(10, 14, 23, 0.8), transparent);
     position: relative;
     z-index: 10;
@@ -271,7 +258,7 @@ timer
 /* Hero Section Background */
 #home-main {
     background: radial-gradient(circle at center, rgba(0, 242, 255, 0.1) 0%, var(--bg-main) 80%), 
-                url('images/pexels-sheenawood-574115.png'); 
+                url('pexels-sheenawood-574115.png'); 
     background-size: cover;
     background-position: center;
     min-height: 100vh; 
@@ -279,17 +266,12 @@ timer
 
 /* About Us Section */
 #aboutus {
-    /* Added the new image with a clean, light overlay for readability */
     background: linear-gradient(rgba(10, 14, 23, 0.5), rgba(10, 14, 23, 0.5)), 
-                url('images/math_dep.jpg');
-    
-    /* Ensure the image covers the section and stays centered */
+                url('math_dep.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Optional: adds a nice parallax effect */
-    
-    /* Layout and Spacing */
+    background-attachment: fixed; 
     padding: 60px 20px;
     border-top: 1px solid var(--line-clr);
     border-bottom: 1px solid var(--line-clr);
@@ -298,7 +280,7 @@ timer
 /* Sponsors Section */
 #sponsors {
     background: linear-gradient(to bottom, var(--bg-main), rgba(0,0,0,0.6)),
-                url("images/Sponsor_back.png");
+                url("Sponsor_back.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -317,7 +299,7 @@ timer
 
 .tenali-logo {
     width: 100%;
-    max-width: 400px; /* Replaced aspect-ratio with max-width for better support */
+    max-width: 400px; 
     height: auto;
     display: block;
     margin: 0 auto 70px auto;
@@ -332,7 +314,7 @@ timer
     flex-wrap: wrap;
     max-width: 1200px; 
     margin: 0 auto;
-    width: 100%; /* Ensure it takes full width */
+    width: 100%; 
 }
 
 .image-container img {
@@ -356,7 +338,6 @@ timer
 /* =========================================
    8. SPEAKERS (Glassmorphism Cards)
    ========================================= */
-/* Removed background image and overlay, kept only structural spacing */
 .speaker {
     padding: 40px 20px;
     margin-top: 50px;
@@ -374,7 +355,6 @@ timer
     letter-spacing: 2px;
 }
 
-/* Glassmorphism Cards - Fully Preserved */
 .spcontainer1, .spcontainer2 {
     display: flex;
     align-items: center;
@@ -383,8 +363,6 @@ timer
     max-width: 1100px; 
     width: 100%; 
     padding: 30px;
-    
-    /* Glass Effect */
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -426,43 +404,38 @@ timer
    9. RESPONSIVE DESIGN (Mobile)
    ========================================= */
 @media (max-width: 800px) {
-    /* 1. RESET MAIN LAYOUT */
     .main-content {
         margin-left: 0;
         width: 100%;
-        padding-bottom: 90px; /* Add space at bottom so navbar doesn't cover content */
+        padding-bottom: 90px; 
     }
 
-    /* 2. SIDEBAR - TRANSFORM TO BOTTOM APP BAR */
     .sidebar {
         width: 100%; 
-        height: auto; /* Auto height based on content */
+        height: auto; 
         position: fixed; 
-        bottom: 0; /* Stick to bottom */
-        top: auto; /* Reset top */
+        bottom: 0; 
+        top: auto; 
         left: 0;
-        
-        /* Darker background for readability */
         background: rgba(10, 14, 23, 0.98);
         backdrop-filter: blur(20px);
-        
         border-right: none;
-        border-top: 1px solid rgba(255, 255, 255, 0.2); /* Border on top */
-        flex-direction: row; /* Horizontal layout */
-        justify-content: space-around; /* Even spacing */
+        border-top: 1px solid rgba(255, 255, 255, 0.2); 
+        flex-direction: row; 
+        justify-content: space-around; 
         align-items: center;
         padding: 10px 0;
-        z-index: 9999; /* Ensure it stays on top of everything */
+        z-index: 9999; 
     }
 
     .sidebar-header {
-        display: none; /* Hide logo in sidebar on mobile */
+        display: none; 
     }
 
     .sidebar a {
         padding: 5px;
-        font-size: 0.75rem; /* Smaller text */
-        flex-direction: column; /* Icon above text */
+        font-size: 0.75rem; 
+        flex-direction: column; 
         text-align: center;
         border-left: none; 
         width: 100%;
@@ -471,24 +444,22 @@ timer
     .sidebar a i, .sidebar a svg {
         margin-right: 0;
         margin-bottom: 5px;
-        font-size: 1.4rem; /* Larger icons for touch */
+        font-size: 1.4rem; 
     }
 
-    /* Mobile Active State */
     .sidebar a:hover,
     .sidebar a.active {
         border-left: none;
-        background: transparent; /* Remove background block on mobile */
+        background: transparent; 
         color: var(--accent-clr);
     }
     
-    /* 3. HERO & HEADINGS */
     .center-svg {
-        max-width: 90%; /* Make main logo larger on mobile */
+        max-width: 90%; 
     }
 
     .title-partner h1 { 
-        font-size: 1.8rem !important; /* Use REM instead of VW for readability */
+        font-size: 1.8rem !important; 
         margin-bottom: 30px; 
     }
     
@@ -497,7 +468,6 @@ timer
         font-size: 1.4rem; 
     }
 
-    /* 4. BUTTONS */
     .button {
         margin-top: 25px;
         width: 80%; 
@@ -505,7 +475,6 @@ timer
         font-size: 1rem;
     }
 
-    /* 5. SPEAKERS CARDS */
     .speakerhead { 
         font-size: 2rem; 
         margin: 30px 0; 
@@ -513,10 +482,10 @@ timer
     }
 
     .spcontainer1, .spcontainer2 {
-        flex-direction: column !important; /* Stack vertically */
+        flex-direction: column !important; 
         padding: 20px;
         margin: 20px auto;
-        width: 90%; /* Ensure card fits within screen with margins */
+        width: 90%; 
     }
 
     .spcontainer1 .speakerimg1,
@@ -527,7 +496,7 @@ timer
     
     .spcontainer1 img,
     .spcontainer2 img {
-        max-width: 200px; /* Limit image size */
+        max-width: 200px; 
     }
 
     .spcontainer1 .speakertex1,
@@ -538,10 +507,9 @@ timer
         font-size: 1rem;
     }
     
-    /* 6. LOGOS & HEADER */
     .header { 
         padding-left: 10px; 
-        height: 60px; /* Slightly smaller header */
+        height: 60px; 
     }
     
     .nit_logo img, .dep_logo img {
@@ -549,9 +517,8 @@ timer
         margin-right: 10px;
     }
     
-    /* 7. PARTNER IMAGES */
     .image-container img {
-        max-width: 150px; /* Smaller logos on mobile */
+        max-width: 150px; 
         margin: 10px;
     }
 }
