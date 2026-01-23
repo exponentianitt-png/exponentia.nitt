@@ -29,7 +29,7 @@ body {
     width: 100%;
     min-height: 100vh; 
     
-    /* Updated path */
+    /* Path updated: removed directory prefix */
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('event_back.jpeg');
     
     background-size: cover;       
@@ -60,64 +60,16 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   TIMER
-   ========================================= */
-.timer-card {
-    background: rgba(255, 255, 255, 0.1); 
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2); 
-    border-radius: 20px;
-    padding: 2rem;
-    margin: 20px auto;
-    width: fit-content;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-.timer-grid {
-    display: flex;
-    gap: 25px;
-    justify-content: center;
-    align-items: center;
-}
-
-.time-segment {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 80px;
-}
-
-.time-segment span {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #ffffff;
-    font-family: 'Courier New', Courier, monospace; 
-}
-
-.time-segment .label {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #e8eaed;
-    margin-top: 5px;
-}
-
-@media (max-width: 600px) {
-    .timer-grid { gap: 10px; }
-    .time-segment span { font-size: 1.8rem; }
-    .time-segment { min-width: 60px; }
-}
-
-/* =========================================
    3. SIDEBAR NAVIGATION (Frosted Glass)
    ========================================= */
 .sidebar {
     background: var(--sidebar-bg);
     backdrop-filter: blur(15px);        
     -webkit-backdrop-filter: blur(15px);
+    
     border-right: 1px solid rgba(255, 255, 255, 0.1); 
     box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3); 
+    
     position: fixed;
     top: 0;
     left: 0;
@@ -170,11 +122,7 @@ h1, h2, h3 {
     text-shadow: 0 0 10px var(--accent-clr); 
 }
 
-.sidebar a:hover i,
-.sidebar a.active i {
-    color: var(--accent-clr); 
-    filter: drop-shadow(0 0 8px var(--accent-clr));
-}
+/* REMOVED: .sub-menu and .dropdown-btn specific logic has been deleted */
 
 .main-content {
     margin-left: 250px; 
@@ -183,7 +131,7 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   4. LAYOUT UTILITIES
+   4. LAYOUT & HEADER
    ========================================= */
 .container {
     display: flex;
@@ -192,15 +140,6 @@ h1, h2, h3 {
     text-align: center;
     width: 100%;
     padding: 0 10px; 
-}
-
-.center-svg {
-    max-width: 50%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    filter: drop-shadow(0 0 10px var(--accent-glow)); 
 }
 
 .header {
@@ -218,66 +157,199 @@ h1, h2, h3 {
 
 .nit_logo img,
 .dep_logo img {
-    max-height: 100px; 
+    max-height: 50px; 
     width: auto;
     margin-right: 15px;
-    margin-top: 75px;
     filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
 }
 
-/* =========================================
-   5. BUTTONS (Modern & Glowing)
-   ========================================= */
-.button {
-    background: var(--gradient-btn);
+.header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px 0;
+    width: 100%;
+    height: auto; 
+    margin-top: 100px; 
+    position: relative;
+    z-index: 10; 
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.header-text .button {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid var(--accent-clr);
     color: #ffffff;
     text-decoration: none;
-    padding: 14px 35px;
-    border-radius: 50px; 
+    padding: 12px 25px;
+    border-radius: 4px;
     font-weight: bold;
-    font-size: 1.1rem;
-    margin-top: 45px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative; 
+    z-index: 20; 
     cursor: pointer;
-    box-shadow: 0 0 20px var(--accent-glow); 
-    transition: all 0.3s ease-in-out;
+    flex-shrink: 0;
+    white-space: nowrap; 
+}
+
+.header-text .button:hover {
+    background-color: var(--accent-clr);
+    box-shadow: 0 0 15px var(--accent-clr);
+    transform: translateY(-2px);
+}
+
+.center-svg {
+    max-width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0 0 10px var(--accent-glow)); 
+}
+
+/* =========================================
+   5. SECTIONS (Events, Deadline, Etc.)
+   ========================================= */
+.Swiper {
+    width: 95%;
+    margin-top: 90px;
+    margin-bottom: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    align-items: center;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    overflow: hidden;
+    border-radius: 1rem;
+    height: 60rem;
+    width: 35rem;
+    background-position: center;
+    background-size: auto;
+    margin-right: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.swiper-slide img {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    max-height: 700px;
+    object-fit: contain;
+    padding: 2rem;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.swiper-slide img:hover {
+    transform: scale(1.05); 
+    filter: drop-shadow(0 0 10px var(--accent-clr)); 
+}
+
+#gridhead {
+    color: var(--accent-clr);
+    font-size: 1.5rem;
+    line-height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.deadline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.deadline-text {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 2.1em;
+    padding: 25px;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border-radius: 15px;
+    letter-spacing: 1px;
+    color: #eee;
+}
+
+.Events {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.Events .content {
+    padding: 0 20px;
+    align-items: left;
+    padding: 25px 0px;
+}
+
+.Events .content .text {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    font-family: poppins;
+    padding: 30px 35px; 
+    font-size: 1.2rem;
+    line-height: 30px;
+    align-content: left;
+    border-radius: 20px; 
+    color: #f0f0f0;
+}
+
+.Events .content .text .Eventname {
+    padding-bottom: 15px;
+    font-family: 'Days One', sans-serif;
+    font-size: 32px;
+    font-weight: bolder;
+    color: var(--accent-clr); 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.1); 
+    margin-bottom: 15px;
     display: inline-block;
 }
 
-.button:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 0 35px var(--accent-clr);
-}
-
 /* =========================================
-   6. SECTIONS & BACKGROUNDS
+   6. EXTRA SECTIONS (About, Sponsors, Etc)
    ========================================= */
-
-/* Hero Section Background */
-#home-main {
-    background: radial-gradient(circle at center, rgba(0, 242, 255, 0.1) 0%, var(--bg-main) 80%), 
-                url('pexels-sheenawood-574115.png'); 
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh; 
-}
-
-/* About Us Section */
 #aboutus {
-    background: linear-gradient(rgba(10, 14, 23, 0.5), rgba(10, 14, 23, 0.5)), 
+    background: linear-gradient(to bottom, var(--bg-main), rgba(10, 14, 23, 0.8), var(--bg-main)), 
                 url('math_dep.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; 
     padding: 60px 20px;
     border-top: 1px solid var(--line-clr);
     border-bottom: 1px solid var(--line-clr);
 }
 
-/* Sponsors Section */
 #sponsors {
     background: linear-gradient(to bottom, var(--bg-main), rgba(0,0,0,0.6)),
                 url("Sponsor_back.png");
@@ -285,25 +357,6 @@ h1, h2, h3 {
     background-position: center;
     background-repeat: no-repeat;
     padding: 50px 0;
-}
-
-/* =========================================
-   7. PARTNERS & LOGOS
-   ========================================= */
-.title-partner h1 {
-    margin-bottom: 60px;
-    font-size: 3vw;
-    padding-top: 20px;
-    color: var(--accent-clr);
-}
-
-.tenali-logo {
-    width: 100%;
-    max-width: 400px; 
-    height: auto;
-    display: block;
-    margin: 0 auto 70px auto;
-    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.15));
 }
 
 .image-container {
@@ -332,13 +385,11 @@ h1, h2, h3 {
     opacity: 1;
 }
 
-.associate-partners h1 { font-size: 2.5vw; padding-top: 20px; }
-.Recognition-partners h1 { font-size: 1.7vw; padding-top: 20px; }
-
-/* =========================================
-   8. SPEAKERS (Glassmorphism Cards)
-   ========================================= */
+/* Speaker Cards */
 .speaker {
+    background: linear-gradient(rgba(10, 14, 23, 0.9), rgba(10, 14, 23, 0.9)), 
+                url('mathback.jpg');
+    background-size: cover;
     padding: 40px 20px;
     margin-top: 50px;
 }
@@ -401,7 +452,7 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   9. RESPONSIVE DESIGN (Mobile)
+   7. RESPONSIVE DESIGN (Mobile)
    ========================================= */
 @media (max-width: 800px) {
     .main-content {
@@ -410,6 +461,7 @@ h1, h2, h3 {
         padding-bottom: 90px; 
     }
 
+    /* FIXED BOTTOM BAR SIDEBAR */
     .sidebar {
         width: 100%; 
         height: auto; 
@@ -428,9 +480,7 @@ h1, h2, h3 {
         z-index: 9999; 
     }
 
-    .sidebar-header {
-        display: none; 
-    }
+    .sidebar-header { display: none; }
 
     .sidebar a {
         padding: 5px;
@@ -454,26 +504,18 @@ h1, h2, h3 {
         color: var(--accent-clr);
     }
     
-    .center-svg {
-        max-width: 90%; 
-    }
-
-    .title-partner h1 { 
-        font-size: 1.8rem !important; 
-        margin-bottom: 30px; 
+    .header-text {
+        margin-top: 85px; 
     }
     
-    .associate-partners h1,
-    .Recognition-partners h1 { 
-        font-size: 1.4rem; 
+    .header-text h1 {
+        font-size: 1.8rem;
+        text-align: center;
     }
-
-    .button {
-        margin-top: 25px;
-        width: 80%; 
-        padding: 12px 0;
-        font-size: 1rem;
-    }
+    
+    .center-svg { max-width: 90%; }
+    
+    .button { font-size: 1.1rem; }
 
     .speakerhead { 
         font-size: 2rem; 
@@ -520,5 +562,30 @@ h1, h2, h3 {
     .image-container img {
         max-width: 150px; 
         margin: 10px;
+    }
+    
+    .Events .content .text {
+        line-height: 25px;
+        font-size: 1rem;
+        padding: 20px;
+    }
+    
+    .swiper-slide {
+        width: 80vw;
+        height: auto;
+    }
+    
+    .swiper-slide img {
+        max-height: 500px;
+    }
+    
+    #gridhead {
+        font-size: 1rem;
+    }
+    
+    .deadline-text {
+        width: 90%;
+        font-size: 0.9rem;
+        padding: 15px;
     }
 }
