@@ -84,7 +84,143 @@
             margin-top: 40px;
             color: #ffffff;
         }
-    </style>
+   
+
+    
+/* =========================================
+   9. RESPONSIVE DESIGN (Mobile)
+   ========================================= */
+@media (max-width: 800px) {
+    /* 1. RESET MAIN LAYOUT */
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding-bottom: 90px; /* Add space at bottom so navbar doesn't cover content */
+    }
+
+    /* 2. SIDEBAR - TRANSFORM TO BOTTOM APP BAR */
+    .sidebar {
+        width: 100%; 
+        height: auto; /* Auto height based on content */
+        position: fixed; 
+        bottom: 0; /* Stick to bottom */
+        top: auto; /* Reset top */
+        left: 0;
+        
+        /* Darker background for readability */
+        background: rgba(10, 14, 23, 0.98);
+        backdrop-filter: blur(20px);
+        
+        border-right: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.2); /* Border on top */
+        flex-direction: row; /* Horizontal layout */
+        justify-content: space-around; /* Even spacing */
+        align-items: center;
+        padding: 10px 0;
+        z-index: 9999; /* Ensure it stays on top of everything */
+    }
+
+    .sidebar-header {
+        display: none; /* Hide logo in sidebar on mobile */
+    }
+
+    .sidebar a {
+        padding: 5px;
+        font-size: 0.75rem; /* Smaller text */
+        flex-direction: column; /* Icon above text */
+        text-align: center;
+        border-left: none; 
+        width: 100%;
+    }
+    
+    .sidebar a i, .sidebar a svg {
+        margin-right: 0;
+        margin-bottom: 5px;
+        font-size: 1.4rem; /* Larger icons for touch */
+    }
+
+    /* Mobile Active State */
+    .sidebar a:hover,
+    .sidebar a.active {
+        border-left: none;
+        background: transparent; /* Remove background block on mobile */
+        color: var(--accent-clr);
+    }
+    
+    /* 3. HERO & HEADINGS */
+    .center-svg {
+        max-width: 90%; /* Make main logo larger on mobile */
+    }
+
+    .title-partner h1 { 
+        font-size: 1.8rem !important; /* Use REM instead of VW for readability */
+        margin-bottom: 30px; 
+    }
+    
+    .associate-partners h1,
+    .Recognition-partners h1 { 
+        font-size: 1.4rem; 
+    }
+
+    /* 4. BUTTONS */
+    .button {
+        margin-top: 25px;
+        width: 80%; 
+        padding: 12px 0;
+        font-size: 1rem;
+    }
+
+    /* 5. SPEAKERS CARDS */
+    .speakerhead { 
+        font-size: 2rem; 
+        margin: 30px 0; 
+        text-align: center;
+    }
+
+    .spcontainer1, .spcontainer2 {
+        flex-direction: column !important; /* Stack vertically */
+        padding: 20px;
+        margin: 20px auto;
+        width: 90%; /* Ensure card fits within screen with margins */
+    }
+
+    .spcontainer1 .speakerimg1,
+    .spcontainer2 .speakerimg2 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .spcontainer1 img,
+    .spcontainer2 img {
+        max-width: 200px; /* Limit image size */
+    }
+
+    .spcontainer1 .speakertex1,
+    .spcontainer2 .speakertext2 {
+        width: 100%;
+        padding: 0;
+        text-align: center;
+        font-size: 1rem;
+    }
+    
+    /* 6. LOGOS & HEADER */
+    .header { 
+        padding-left: 10px; 
+        height: 60px; /* Slightly smaller header */
+    }
+    
+    .nit_logo img, .dep_logo img {
+        max-height: 40px;
+        margin-right: 10px;
+    }
+    
+    /* 7. PARTNER IMAGES */
+    .image-container img {
+        max-width: 150px; /* Smaller logos on mobile */
+        margin: 10px;
+    }
+  }
+ </style>
 </head>
 
 <body>
@@ -328,4 +464,5 @@
 </body>
 
 </html>
+
 
