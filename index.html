@@ -8,6 +8,131 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="home.css">
     <script type="text/javascript" src="app.js" defer></script>
+    <style>
+        /* Essential styles for the sponsor layout */
+        .sponsors-section {
+            text-align: center;
+            padding: 40px 0;
+            background-color: transparent;
+        }
+        .sponsor-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .sponsor-link img {
+            max-width: 180px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .sponsor-link img:hover {
+            transform: scale(1.1);
+        }
+        .sponsor-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        /* --- UPDATED SPEAKER SECTION STYLES --- */
+        .speaker {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .speakerhead {
+            font-size: 2.5rem;
+            color: #00d4ff; /* Electric blue matching your Register button */
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .speakers-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Glassmorphism Card Style */
+        .speaker-card {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            text-align: left;
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        /* Alternate layout for the second card */
+        .speaker-card.reverse {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .speaker-img-wrapper img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #00d4ff;
+            padding: 5px;
+        }
+
+        .speaker-info {
+            padding: 0 40px;
+            flex: 1;
+        }
+
+        .speaker-info h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin: 0 0 5px 0;
+        }
+
+        .speaker-info h4 {
+            font-size: 1.1rem;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .speaker-info p {
+            color: #b0b3c1;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .speaker-card, .speaker-card.reverse {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            .speaker-info {
+                padding: 20px 0 0 0;
+            }
+            .speakerhead {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -15,7 +140,7 @@
         <ul>
             <li>
                 <span class="logo">Exponentia</span>
-                <button onclick=toggleSidebar() id="toggle-btn">
+                <button onclick="toggleSidebar()" id="toggle-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
                         <path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z" />
                     </svg>
@@ -29,48 +154,14 @@
                     <span>Home</span>
                 </a>
             </li>
-            <li>
-                <a href="#aboutus">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                        <path d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
-                    </svg>
-                    <span>About</span>
-                </a>
-            </li>
-            <li>
-                <a href="offline_events.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                        <path d="M280-120v-80h160v-124q-49-11-87.5-41.5T296-442q-75-9-125.5-65.5T120-640v-40q0-33 23.5-56.5T200-760h80v-80h400v80h80q33 0 56.5 23.5T840-680v40q0 76-50.5 132.5T664-442q-18 46-56.5 76.5T520-324v124h160v80H280Zm0-408v-152h-80v40q0 38 22 68.5t58 43.5Zm200 128q50 0 85-35t35-85v-240H360v240q0 50 35 85t85 35Zm200-128q36-13 58-43.5t22-68.5v-40h-80v152Zm-200-52Z" />
-                    </svg>
-                    <span>Events</span>
-                </a>
-            </li>
-            <li>
-                <a href="people.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                        <path d="M40-160v-112q0-34 17.5-62.5T106-378q62-31 126-46.5T360-440q64 0 128 15.5T614-378q31 15 48.5 43.5T680-272v112H40Zm720 0v-120q0-44-24.5-84.5T666-434q51 6 96 20.5t84 35.5q26 13 40 34.5t14 47.5v96H760ZM360-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm400-160q0 66-47 113t-113 47q-11 0-21-1.5t-19-4.5q23-30 36.5-65t13.5-73q0-38-13.5-73T560-762q9-3 19-4.5t21-1.5q66 0 113 47t47 113ZM120-240h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9-5-14.5-14t-5.5-20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0 0Z"/>
-                    </svg>
-                    <span>Peoples</span>
-                </a>
-            </li>
-            <li>
-                <a href="merch.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                        <path d="m240-522-40 22q-14 8-30 4t-24-18L66-654q-8-14-4-30t18-24l230-132h70q9 0 14.5 5.5T400-820v20q0 33 23.5 56.5T480-720q33 0 56.5-23.5T560-800v-20q0-9 5.5-14.5T580-840h70l230 132q14 8 18 24t-4 30l-80 140q-8 14-23.5 17.5T760-501l-40-20v361q0 17-11.5 28.5T680-120H280q-17 0-28.5-11.5T240-160v-362Zm80-134v456h320v-456l124 68 42-70-172-100q-15 51-56.5 84.5T480-640q-56 0-97.5-33.5T326-758L154-658l42 70 124-68Zm160 177Z" />
-                    </svg>
-                    <span>Merch</span>
-                </a>
-            </li>
-            <li>
-                <a href="help.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                        <path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z" />
-                    </svg>
-                    <span>Help</span>
-                </a>
-            </li>
+            <li><a href="#aboutus"><span>About</span></a></li>
+            <li><a href="offline_events.html"><span>Events</span></a></li>
+            <li><a href="people.html"><span>Peoples</span></a></li>
+            <li><a href="merch.html"><span>Merch</span></a></li>
+            <li><a href="help.html"><span>Help</span></a></li>
         </ul>
     </nav>
+
     <main>
         <div class="container" id="home-main">
             <div class="header">
@@ -83,84 +174,65 @@
 
             <img id="logo" src="logo(1).png" alt="Logo" style="width: 800px; height: auto;">
 
-           <div class="timer-card">
+            <div class="timer-card">
                 <div class="timer-grid">
-                    <div class="time-segment">
-                        <span id="days">00</span>
-                        <div class="label">Days</div>
-                    </div>
-                    <div class="time-segment">
-                        <span id="hours">00</span>
-                        <div class="label">Hours</div>
-                    </div>
-                    <div class="time-segment">
-                        <span id="minutes">00</span>
-                        <div class="label">Mins</div>
-                    </div>
-                    <div class="time-segment">
-                        <span id="seconds">00</span>
-                        <div class="label">Secs</div>
-                    </div>
-                    <div class="timer-footer">
-                        <span>TO GO</span>
-                    </div>
+                    <div class="time-segment"><span id="days">00</span><div class="label">Days</div></div>
+                    <div class="time-segment"><span id="hours">00</span><div class="label">Hours</div></div>
+                    <div class="time-segment"><span id="minutes">00</span><div class="label">Mins</div></div>
+                    <div class="time-segment"><span id="seconds">00</span><div class="label">Secs</div></div>
+                    <div class="timer-footer"><span>TO GO</span></div>
                 </div>
             </div>
+
             <div class="button">
                 <a href="https://forms.gle/F2C2CBEZ6XY6W4R88" style="text-decoration: none; color: #ffffff">Register</a>
             </div>
-
-            </div>
-        <div class="container" id="sponsors">
-            <div class="title-partner">
-                <h1>Brought To You By</h1>
-                <div class="image-container">
-                    <img src="ogp.jpeg" alt="">
-                </div>
         </div>
+
+        <div class="container sponsors-section">
+            <h1 class="sponsor-title">Brought To You By</h1>
+            <div class="sponsor-container">
+                <a href="https://orientgreenpower.com/default.asp" target="_blank" class="sponsor-link">
+                    <img src="ogp .jpeg" alt="Orient Green Power">
+                </a>
+                <a href="https://www.medimixayurveda.com/" target="_blank" class="sponsor-link">
+                    <img src="medimix.png" alt="Medimix">
+                </a>
+            </div>
+        </div>
+
         <div class="speaker">
-            <div>
-                <h2 class="speakerhead">Informative lectures given by</h2>
-            </div>
-
-            <div class="spcontainer1">
-                <div class="speakerimg1">
-                    <img src="sample_dp.png" alt="speaker">
-                </div>
-                <div class="speakertex1">
-                    <h3>xyz</h3>
-                    <h4 style="color: #b0b3c1;">yzx university</h4>
-                    <p>bla bla</p>
-                </div>
-            </div>
-            <div class="spcontainer2">
-                <div class="speakertext2">
-                    <h3>xyz</h3>
-                    <h4 style="color: #b0b3c1;">jkl university</h4>
-                    <p>bla bla  </p>
-                </div>
-                <div class="speakerimg2">
-                    <img src="sample_dp.png" alt="speaker">
+            <h2 class="speakerhead">Informative lectures given by</h2>
+            
+            <div class="speakers-grid">
+                <div class="speaker-card">
+                    <div class="speaker-img-wrapper">
+                        <img src="sample_dp.png" alt="Speaker XYZ">
+                    </div>
+                    <div class="speaker-info">
+                        <h3>Dr. Jane Doe</h3>
+                        <h4>Professor, YZX University</h4>
+                        <p>Specialist in Applied Mathematics and Quantum Computing. Author of "The Infinite Path."</p>
+                    </div>
                 </div>
 
+                <div class="speaker-card reverse">
+                    <div class="speaker-img-wrapper">
+                        <img src="sample_dp.png" alt="Speaker ABC">
+                    </div>
+                    <div class="speaker-info">
+                        <h3>Dr. John Smith</h3>
+                        <h4>Lead Researcher, JKL Labs</h4>
+                        <p>Expert in Computational Fluid Dynamics. Awarded for excellence in Mathematical Modeling 2025.</p>
+                    </div>
+                </div>
             </div>
         </div>
+
         <div class="container" id="aboutus">
             <h2>About Us</h2>
-            <p>
-                National Institute of Technology, Tiruchirapalli (NIT Trichy), is a prestigious institution
-                celebrated for its contributions to science, research, and innovation. Since its establishment
-                in 1964, it has been a hub for academic excellence, fostering a culture of inquiry and discovery.
-            </p>
-            <p>
-                about Department
-            </p>
-            <p>
-                Exponentia is the annual mathematics festival organized by the Mathematics Department of NIT Trichy. Bringing together students, educators, and math enthusiasts from across the country, Exponentia 2026 promises a series of engaging events, workshops, and competitions designed to celebrate the beauty and application of mathematics in various fields.
-            </p>
-            <p>
-                anything else
-            </p>
+            <p>National Institute of Technology, Tiruchirapalli (NIT Trichy), is a prestigious institution celebrated for science and innovation...</p>
+            <p>Exponentia 2026 promises engaging events to celebrate the beauty of mathematics.</p>
         </div>
     </main>
 
@@ -177,7 +249,7 @@
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="https:https://forms.gle/F2C2CBEZ6XY6W4R88" target="_blank">Registration</a></li>
+                    <li><a href="https://forms.gle/F2C2CBEZ6XY6W4R88" target="_blank">Registration</a></li>
                     <li><a href="merch.html">Merch</a></li>
                     <li><a href="help.html">Contact us</a></li>
                 </ul>
@@ -188,7 +260,4 @@
         </div>
     </footer>
 </body>
-
 </html>
-
-
