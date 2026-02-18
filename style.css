@@ -327,7 +327,7 @@ footer {
 }
 
 /* =========================================
-   5. MOBILE RESPONSIVE
+   5. MOBILE RESPONSIVE - SOLID NAVIGATION BAR
    ========================================= */
 @media (max-width: 800px) {
   body {
@@ -337,91 +337,275 @@ footer {
       "main"
       "footer"
       "sidebar"; 
+    padding-bottom: 0;
   }
 
-  /* Reset Sidebar for Mobile */
+  /* Main content padding to prevent overlap with fixed bottom bar */
+  main {
+    padding: 20px 20px 80px 20px; /* Added bottom padding for fixed bar */
+    margin-bottom: 0;
+  }
+
+  /* Reset Sidebar for Mobile - SOLID & OPAQUE */
   #sidebar, 
   #sidebar.close {
-    width: 100%;
-    height: 60px;
-    flex-direction: row;
-    padding: 0;
-    position: fixed;
-    bottom: 0;
-    top: auto;
-    border-right: none;
-    border-top: 1px solid var(--line-clr);
-    overflow: visible; 
+    /* SOLID BACKGROUND - COMPLETELY OPAQUE */
+    background-color: #0f131f !important; /* Solid dark color from variable */
+    background: #0f131f !important; /* Fallback */
+    
+    /* REMOVE ALL TRANSPARENCY/GLASS EFFECTS */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+    
+    /* POSITIONING - FIXED AT BOTTOM */
+    width: 100% !important;
+    height: 70px !important;
+    flex-direction: row !important;
+    padding: 0 !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    top: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    
+    /* BORDER & SHADOW */
+    border-right: none !important;
+    border-top: 3px solid var(--accent-clr) !important; /* Thicker cyan border */
+    border-bottom: none !important;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.8) !important; /* Stronger shadow */
+    
+    /* ENSURE VISIBILITY */
+    z-index: 9999 !important;
+    overflow: visible !important;
   }
 
+  /* Hide first child (logo/toggle) completely */
+  #sidebar > ul > li:first-child {
+    display: none !important;
+  }
+
+  /* Sidebar UL layout */
   #sidebar ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
-    margin: 0;
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
   }
   
+  /* Sidebar list items */
   #sidebar li {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    position: static; 
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: static !important;
   }
 
-  #sidebar > ul > li:first-child {
-    display: none !important; 
-  }
-
-  /* --- FIX: Display Logo (Icon) then Text (Side-by-Side) --- */
+  /* Sidebar links - ICON + TEXT side by side */
   #sidebar a, 
   #sidebar .dropdown-btn {
-    flex-direction: row; /* CHANGED: Row instead of Column */
-    justify-content: center;
-    padding: 5px;
-    height: 100%;
-    margin: 0;
-    border-radius: 0;
-    font-size: 0.8rem; /* Slight size bump for readability */
-    gap: 8px; /* Add spacing between Icon and Text */
+    display: flex !important;
+    flex-direction: row !important; /* ICON + TEXT horizontally */
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important; /* Space between icon and text */
+    
+    width: 100% !important;
+    height: 100% !important;
+    padding: 5px 10px !important;
+    margin: 0 !important;
+    
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    
+    font-size: 0.8rem !important;
+    color: var(--secondary-text-clr) !important;
+    text-decoration: none !important;
+    
+    transition: all 0.2s ease !important;
+  }
+
+  /* SVG Icons */
+  #sidebar svg,
+  #sidebar.close svg {
+    min-width: 22px !important;
+    width: 22px !important;
+    height: 22px !important;
+    margin: 0 !important; /* Remove all margins */
+    fill: var(--secondary-text-clr) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  /* Text labels - ALWAYS VISIBLE */
+  #sidebar a span, 
+  #sidebar .dropdown-btn span,
+  #sidebar.close a span, 
+  #sidebar.close .dropdown-btn span {
+    display: inline-block !important; /* Force show text */
+    font-size: 0.75rem !important;
+    line-height: 1 !important;
+    color: var(--secondary-text-clr) !important;
+  }
+
+  /* Active/Hover states */
+  #sidebar a:hover,
+  #sidebar .dropdown-btn:hover,
+  #sidebar li.active a {
+    background-color: rgba(0, 242, 255, 0.15) !important;
+    color: var(--accent-clr) !important;
+  }
+
+  #sidebar a:hover svg,
+  #sidebar .dropdown-btn:hover svg,
+  #sidebar li.active a svg {
+    fill: var(--accent-clr) !important;
+  }
+
+  /* SUBMENU STYLES FOR MOBILE */
+  #sidebar .sub-menu {
+    position: fixed !important;
+    bottom: 73px !important; /* Position above the main bar */
+    left: 0 !important;
+    width: 100% !important;
+    background: #1a202c !important; /* Solid darker background */
+    border-top: 2px solid var(--accent-clr) !important;
+    border-bottom: none !important;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5) !important;
+    padding: 10px !important;
+    margin: 0 !important;
+    display: none !important;
+    z-index: 10000 !important;
+  }
+
+  /* Show submenu on hover/touch */
+  #sidebar li:hover .sub-menu,
+  #sidebar li:focus-within .sub-menu,
+  #sidebar li .sub-menu.show {
+    display: block !important;
+  }
+
+  /* Submenu items */
+  #sidebar .sub-menu a {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 12px !important;
+    margin: 2px 0 !important;
+    font-size: 0.9rem !important;
+    background: transparent !important;
+    border-radius: 5px !important;
+    color: var(--secondary-text-clr) !important;
+    gap: 10px !important;
+  }
+
+  #sidebar .sub-menu a:hover {
+    background: rgba(0, 242, 255, 0.1) !important;
+    color: var(--accent-clr) !important;
+  }
+
+  #sidebar .sub-menu a svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  #sidebar .sub-menu a span {
+    display: inline-block !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* FOOTER ADJUSTMENTS FOR MOBILE */
+  footer {
+    margin-bottom: 70px !important; /* Push footer above fixed bar */
+    padding-bottom: 20px !important;
+  }
+
+  .footer-container {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 30px !important;
+    padding: 0 20px 20px !important;
+  }
+
+  .footer-column {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  .footer-bottom {
+    margin-top: 10px !important;
+    padding-top: 15px !important;
+  }
+
+  /* Container adjustments */
+  .container {
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Fix for any content that might hide behind the bar */
+  .timer-card,
+  .speaker,
+  #aboutus,
+  #sponsors {
+    margin-bottom: 10px !important;
+  }
+}
+
+/* Extra small devices - 480px and below */
+@media (max-width: 480px) {
+  main {
+    padding: 15px 15px 80px 15px !important;
+  }
+
+  #sidebar, 
+  #sidebar.close {
+    height: 65px !important;
+  }
+
+  #sidebar a, 
+  #sidebar .dropdown-btn {
+    gap: 4px !important;
+    font-size: 0.7rem !important;
+  }
+
+  #sidebar svg,
+  #sidebar.close svg {
+    min-width: 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  #sidebar a span, 
+  #sidebar .dropdown-btn span {
+    font-size: 0.65rem !important;
   }
 
   #sidebar .sub-menu {
-    position: absolute;
-    bottom: 60px; 
-    left: 0;
-    width: 100%;
-    background: var(--sidebar-bg);
-    border-top: 1px solid var(--accent-clr);
-    padding: 10px;
-    display: none; 
+    bottom: 68px !important;
   }
 
-  #sidebar li:hover .sub-menu,
-  #sidebar li:focus-within .sub-menu {
-      display: block;
-      grid-template-rows: 1fr;
-  }
-  
   #sidebar .sub-menu a {
-      padding-left: 0;
-      text-align: center;
-      justify-content: center;
-      padding: 10px;
+    padding: 10px !important;
+    font-size: 0.8rem !important;
   }
 
-  #sidebar a span,
-  #sidebar.close a span, 
-  #sidebar.close .dropdown-btn span {
-      display: block;
+  #sidebar .sub-menu a span {
+    font-size: 0.75rem !important;
   }
 
-  /* --- FIX: Reset SVG margins for side-by-side layout --- */
-  #sidebar svg,
-  #sidebar.close svg {
-    margin-right: 0; /* Reset */
-    margin-bottom: 0; /* No bottom margin needed in row mode */
-    width: 20px;
-    height: 20px;
+  footer {
+    margin-bottom: 65px !important;
+  }
+
+  .footer-container {
+    gap: 20px !important;
   }
 }
