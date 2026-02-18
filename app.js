@@ -11,7 +11,7 @@ function toggleSidebar() {
 //----------------------------------//
 function updateCountdown() {
     // Set the target date (February 27, 2026)
-    const targetDate = new Date('March 2, 2026 09:00:00').getTime();
+    const targetDate = new Date('March 02, 2026 09:00:00').getTime();
 
     // Update the countdown every second
     const interval = setInterval(() => {
@@ -66,5 +66,6 @@ function toggleform() {
         }, 300);
     }
 }
+
 
 
