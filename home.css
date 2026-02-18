@@ -396,204 +396,285 @@ h1, h2, h3 {
     box-shadow: 0 0 25px rgba(0, 242, 255, 0.15);
 }
 /* =========================================
-   9. RESPONSIVE DESIGN (FIXED SOLID BAR)
+   5. MOBILE RESPONSIVE - SOLID NAVIGATION BAR
    ========================================= */
 @media (max-width: 800px) {
-    .main-content {
-        margin-left: 0;
-        width: 100%;
-        padding-bottom: 80px; /* Space for fixed bottom bar */
-    }
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto auto;
+    grid-template-areas: 
+      "main"
+      "footer"
+      "sidebar"; 
+    padding-bottom: 0;
+  }
 
-    .sidebar {
-        /* SOLID BACKGROUND - NO TRANSPARENCY */
-        background: #0a0e17 !important; /* Solid dark blue */
-        background-color: #0a0e17 !important;
-        
-        /* REMOVE ALL GLASS EFFECTS */
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        
-        /* POSITIONING - FIXED AT BOTTOM */
-        position: fixed !important;
-        top: auto !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 70px !important; /* Slightly smaller */
-        
-        /* LAYOUT */
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-around !important;
-        align-items: center !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        
-        /* BORDER & SHADOW */
-        border-right: none !important;
-        border-top: 2px solid var(--accent-clr) !important; /* Cyan border */
-        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5) !important;
-        
-        /* ENSURING VISIBILITY */
-        opacity: 1 !important;
-        visibility: visible !important;
-        z-index: 9999 !important;
-    }
+  /* Main content padding to prevent overlap with fixed bottom bar */
+  main {
+    padding: 20px 20px 80px 20px; /* Added bottom padding for fixed bar */
+    margin-bottom: 0;
+  }
 
-    /* Hide sidebar header on mobile */
-    .sidebar-header {
-        display: none !important;
-    }
+  /* Reset Sidebar for Mobile - SOLID & OPAQUE */
+  #sidebar, 
+  #sidebar.close {
+    /* SOLID BACKGROUND - COMPLETELY OPAQUE */
+    background-color: #0f131f !important; /* Solid dark color from variable */
+    background: #0f131f !important; /* Fallback */
+    
+    /* REMOVE ALL TRANSPARENCY/GLASS EFFECTS */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+    
+    /* POSITIONING - FIXED AT BOTTOM */
+    width: 100% !important;
+    height: 70px !important;
+    flex-direction: row !important;
+    padding: 0 !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    top: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    
+    /* BORDER & SHADOW */
+    border-right: none !important;
+    border-top: 3px solid var(--accent-clr) !important; /* Thicker cyan border */
+    border-bottom: none !important;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.8) !important; /* Stronger shadow */
+    
+    /* ENSURE VISIBILITY */
+    z-index: 9999 !important;
+    overflow: visible !important;
+  }
 
-    /* Mobile navigation links */
-    .sidebar a {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        
-        width: auto !important;
-        min-width: 60px !important;
-        padding: 8px 0 !important;
-        
-        font-family: 'Days One', sans-serif !important;
-        font-size: 0.7rem !important;
-        color: var(--text-secondary) !important;
-        text-decoration: none !important;
-        
-        background: transparent !important;
-        border: none !important;
-        border-left: none !important;
-        
-        transition: all 0.2s ease !important;
-    }
+  /* Hide first child (logo/toggle) completely */
+  #sidebar > ul > li:first-child {
+    display: none !important;
+  }
 
-    /* Icons in mobile nav */
-    .sidebar a i, 
-    .sidebar a svg {
-        margin: 0 0 4px 0 !important;
-        font-size: 1.4rem !important;
-        color: var(--text-secondary) !important;
-    }
+  /* Sidebar UL layout */
+  #sidebar ul {
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  
+  /* Sidebar list items */
+  #sidebar li {
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: static !important;
+  }
 
-    /* Active/Hover states */
-    .sidebar a:hover,
-    .sidebar a.active {
-        color: var(--accent-clr) !important;
-        background: transparent !important;
-        border-left: none !important;
-        text-shadow: 0 0 10px var(--accent-clr) !important;
-    }
+  /* Sidebar links - ICON + TEXT side by side */
+  #sidebar a, 
+  #sidebar .dropdown-btn {
+    display: flex !important;
+    flex-direction: row !important; /* ICON + TEXT horizontally */
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important; /* Space between icon and text */
+    
+    width: 100% !important;
+    height: 100% !important;
+    padding: 5px 10px !important;
+    margin: 0 !important;
+    
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    
+    font-size: 0.8rem !important;
+    color: var(--secondary-text-clr) !important;
+    text-decoration: none !important;
+    
+    transition: all 0.2s ease !important;
+  }
 
-    .sidebar a:hover i,
-    .sidebar a.active i {
-        color: var(--accent-clr) !important;
-        filter: drop-shadow(0 0 8px var(--accent-clr)) !important;
-    }
+  /* SVG Icons */
+  #sidebar svg,
+  #sidebar.close svg {
+    min-width: 22px !important;
+    width: 22px !important;
+    height: 22px !important;
+    margin: 0 !important; /* Remove all margins */
+    fill: var(--secondary-text-clr) !important;
+    transition: all 0.2s ease !important;
+  }
 
-    /* Adjust logo sizes for mobile */
-    .nit_logo img,
-    .dep_logo img {
-        max-height: 50px !important;
-        margin-top: 15px !important;
-    }
+  /* Text labels - ALWAYS VISIBLE */
+  #sidebar a span, 
+  #sidebar .dropdown-btn span,
+  #sidebar.close a span, 
+  #sidebar.close .dropdown-btn span {
+    display: inline-block !important; /* Force show text */
+    font-size: 0.75rem !important;
+    line-height: 1 !important;
+    color: var(--secondary-text-clr) !important;
+  }
 
-    /* Timer adjustments for mobile */
-    .timer-card {
-        padding: 1rem;
-        margin: 15px auto;
-    }
+  /* Active/Hover states */
+  #sidebar a:hover,
+  #sidebar .dropdown-btn:hover,
+  #sidebar li.active a {
+    background-color: rgba(0, 242, 255, 0.15) !important;
+    color: var(--accent-clr) !important;
+  }
 
-    .timer-grid {
-        gap: 10px;
-    }
+  #sidebar a:hover svg,
+  #sidebar .dropdown-btn:hover svg,
+  #sidebar li.active a svg {
+    fill: var(--accent-clr) !important;
+  }
 
-    .time-segment span {
-        font-size: 1.8rem;
-    }
+  /* SUBMENU STYLES FOR MOBILE */
+  #sidebar .sub-menu {
+    position: fixed !important;
+    bottom: 73px !important; /* Position above the main bar */
+    left: 0 !important;
+    width: 100% !important;
+    background: #1a202c !important; /* Solid darker background */
+    border-top: 2px solid var(--accent-clr) !important;
+    border-bottom: none !important;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5) !important;
+    padding: 10px !important;
+    margin: 0 !important;
+    display: none !important;
+    z-index: 10000 !important;
+  }
 
-    .time-segment {
-        min-width: 60px;
-    }
+  /* Show submenu on hover/touch */
+  #sidebar li:hover .sub-menu,
+  #sidebar li:focus-within .sub-menu,
+  #sidebar li .sub-menu.show {
+    display: block !important;
+  }
 
-    /* Speaker section mobile adjustments */
-    .spcontainer1, 
-    .spcontainer2 {
-        flex-direction: column !important;
-        padding: 20px !important;
-    }
+  /* Submenu items */
+  #sidebar .sub-menu a {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 12px !important;
+    margin: 2px 0 !important;
+    font-size: 0.9rem !important;
+    background: transparent !important;
+    border-radius: 5px !important;
+    color: var(--secondary-text-clr) !important;
+    gap: 10px !important;
+  }
 
-    .spcontainer1 .speakertex1, 
-    .spcontainer2 .speakertext2 {
-        width: 100% !important;
-        padding: 20px 0 !important;
-        text-align: center !important;
-    }
+  #sidebar .sub-menu a:hover {
+    background: rgba(0, 242, 255, 0.1) !important;
+    color: var(--accent-clr) !important;
+  }
 
-    .spcontainer1 .speakerimg1,
-    .spcontainer2 .speakerimg2 {
-        width: 100% !important;
-    }
+  #sidebar .sub-menu a svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
 
-    /* Partner logos mobile */
-    .title-partner h1 {
-        font-size: 6vw !important;
-    }
+  #sidebar .sub-menu a span {
+    display: inline-block !important;
+    font-size: 0.85rem !important;
+  }
 
-    .associate-partners h1 {
-        font-size: 5vw !important;
-    }
+  /* FOOTER ADJUSTMENTS FOR MOBILE */
+  footer {
+    margin-bottom: 70px !important; /* Push footer above fixed bar */
+    padding-bottom: 20px !important;
+  }
 
-    .Recognition-partners h1 {
-        font-size: 4vw !important;
-    }
+  .footer-container {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 30px !important;
+    padding: 0 20px 20px !important;
+  }
 
-    .image-container img {
-        max-width: 150px !important;
-    }
+  .footer-column {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
 
-    /* Button mobile */
-    .button {
-        padding: 12px 25px !important;
-        font-size: 1rem !important;
-    }
+  .footer-bottom {
+    margin-top: 10px !important;
+    padding-top: 15px !important;
+  }
 
-    /* Add padding to container to prevent content hide */
-    .container {
-        padding-bottom: 80px !important;
-    }
+  /* Container adjustments */
+  .container {
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Fix for any content that might hide behind the bar */
+  .timer-card,
+  .speaker,
+  #aboutus,
+  #sponsors {
+    margin-bottom: 10px !important;
+  }
 }
 
-/* Extra small devices */
+/* Extra small devices - 480px and below */
 @media (max-width: 480px) {
-    .sidebar {
-        height: 65px !important;
-    }
+  main {
+    padding: 15px 15px 80px 15px !important;
+  }
 
-    .sidebar a {
-        font-size: 0.65rem !important;
-        min-width: 50px !important;
-    }
+  #sidebar, 
+  #sidebar.close {
+    height: 65px !important;
+  }
 
-    .sidebar a i, 
-    .sidebar a svg {
-        font-size: 1.3rem !important;
-    }
+  #sidebar a, 
+  #sidebar .dropdown-btn {
+    gap: 4px !important;
+    font-size: 0.7rem !important;
+  }
 
-    .time-segment span {
-        font-size: 1.4rem !important;
-    }
+  #sidebar svg,
+  #sidebar.close svg {
+    min-width: 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+  }
 
-    .time-segment .label {
-        font-size: 0.7rem !important;
-    }
+  #sidebar a span, 
+  #sidebar .dropdown-btn span {
+    font-size: 0.65rem !important;
+  }
 
-    .container {
-        padding-bottom: 70px !important;
-    }
-    
-    .main-content {
-        padding-bottom: 70px !important;
-    }
+  #sidebar .sub-menu {
+    bottom: 68px !important;
+  }
+
+  #sidebar .sub-menu a {
+    padding: 10px !important;
+    font-size: 0.8rem !important;
+  }
+
+  #sidebar .sub-menu a span {
+    font-size: 0.75rem !important;
+  }
+
+  footer {
+    margin-bottom: 65px !important;
+  }
+
+  .footer-container {
+    gap: 20px !important;
+  }
 }
