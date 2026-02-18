@@ -4,12 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Exponentia 2026 - Engage yourself with us and register for offline mathematical events.">
     <title>Exponentia</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="Event.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script type="text/javascript" src="app.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="app.js" defer></script>
 </head>
 
 <body>
@@ -17,7 +20,7 @@
         <ul>
             <li>
                 <span class="logo">Exponentia</span>
-                <button onclick="toggleSidebar()" id="toggle-btn">
+                <button onclick="toggleSidebar()" id="toggle-btn" aria-label="Toggle Navigation">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
                         <path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z" />
                     </svg>
@@ -37,137 +40,122 @@
             <li><a href="help.html"><span>Help</span></a></li>
         </ul>
     </nav>
+
     <main>
-        <div class="header-text" id="hdr">
+        <header class="header-text" id="hdr">
             <h1>Engage yourself with us!</h1>
             <h1>Register Now</h1>
             <a href="https://forms.gle/F2C2CBEZ6XY6W4R88" class="button">Register</a>
-        </div>
-        <div id="gridhead">
-            <h1>Our Offline Events</h1>
-        </div>
-        <div class="deadline">
-            <div class="deadline-text">
-                <h2>Registration/Submission deadline:<br> 28th feb 2026 12:00PM</h2>
-            </div>
-        </div>
-        <div class="Events">
+        </header>
 
-            <div class="content" id="paperpresentation">
+        <section id="gridhead">
+            <h1>Our Offline Events</h1>
+        </section>
+
+        <section class="deadline">
+            <div class="deadline-text">
+                <h2>Registration/Submission deadline:<br> 28th Feb 2026 12:00PM</h2>
+            </div>
+        </section>
+
+        <section class="Events">
+            <article class="content" id="paperpresentation">
                 <div class="text">
                     <p class="Eventname">Paper Presentation</p>
-                    <p style="font-weight: bold;">
-                        Winning Prizes:Medals, Certificates, and Gift hamper<br>
-                        Participation: Individual <br>
-                        <i>Rules:</i>
-                    </p>
                     <p>
-                    <ul style="margin-left: 25px;">
-                        <li> The theme of the presentation is ________.
-                        <li> Two teams (one UG and one PG) per college are permitted.
-                         <li> Each team shall consist of one participant only.
-                         <li> Time duration : 5 min ( 4 min for presentation + 1 min for discussion )
-                         <li> Participants must submit a hard copy of their presentation to the judges before the presentation.
-                        </li>
-                    </ul>
+                        <strong>Winning Prizes:</strong> Medals, Certificates, and Gift hamper<br>
+                        <strong>Participation:</strong> Individual<br>
+                        <em>Rules:</em>
                     </p>
+                    <ul style="margin-left: 25px;">
+                        <li>The theme of the presentation is ________.</li>
+                        <li>Two teams (one UG and one PG) per college are permitted.</li>
+                        <li>Each team shall consist of one participant only.</li>
+                        <li>Time duration: 5 min (4 min for presentation + 1 min for discussion).</li>
+                        <li>Participants must submit a hard copy of their presentation to the judges before the presentation.</li>
+                    </ul>
                 </div>
-            </div>
+            </article>
 
-            <div class="content" id="Mathematical Rangoli">
+            <article class="content" id="mathematical-rangoli">
                 <div class="text">
                     <p class="Eventname">Mathematical Rangoli</p>
-                    <p style="font-weight: bold;">
-                        Winning Prizes: Medals, Certificates, and Gift hamper<br>
-                        Participation: Team <br>
-                        <i>Rules:</i>
-                    </p>
                     <p>
-                    <ul style="margin-left: 25px;">
-                        <li> The theme of the rangoli is any mathematical concept.
-                        <li> At most two teams (UG or PG) per college are permitted.
-                        <li> Each team shall consist of three participants.
-                        <li> The time duration for the competition is one hour.
-                        <li> Participants should bring all necessary materials required for the rangoli.
-
-                        </li>
-                    </ul>
+                        <strong>Winning Prizes:</strong> Medals, Certificates, and Gift hamper<br>
+                        <strong>Participation:</strong> Team<br>
+                        <em>Rules:</em>
                     </p>
+                    <ul style="margin-left: 25px;">
+                        <li>The theme of the rangoli is any mathematical concept.</li>
+                        <li>At most two teams (UG or PG) per college are permitted.</li>
+                        <li>Each team shall consist of three participants.</li>
+                        <li>The time duration for the competition is one hour.</li>
+                        <li>Participants should bring all necessary materials required for the rangoli.</li>
+                    </ul>
                 </div>
-            </div>
+            </article>
 
-            <div class="content" id="quiz ug">
+            <article class="content" id="quiz-ug">
                 <div class="text">
                     <p class="Eventname">Quiz UG</p>
-                    <p style="font-weight: bold;">
-                        Winning Prizes: Medals, Certificates, and Gift hamper<br>
-                        Participation: Teams <br>
-                        <i>Rules:</i>
-                    </p>
                     <p>
-                    <ul style="margin-left: 25px;">
-                        <li> One team per college is permitted and each team shall consist of three participants.
-                        <li> Each team may include at most two final year students.
-                         <li>Topics are Sequences and Series of Real Numbers, Functions of One or Two Real
-                              Variables, Group Theory, Vector Spaces, Matrices, Integral Calculus and Differen
-                               tial Equations.</li>
-                    </ul>
+                        <strong>Winning Prizes:</strong> Medals, Certificates, and Gift hamper<br>
+                        <strong>Participation:</strong> Teams<br>
+                        <em>Rules:</em>
                     </p>
+                    <ul style="margin-left: 25px;">
+                        <li>One team per college is permitted and each team shall consist of three participants.</li>
+                        <li>Each team may include at most two final year students.</li>
+                        <li>Topics: Sequences and Series of Real Numbers, Functions of One or Two Real Variables, Group Theory, Vector Spaces, Matrices, Integral Calculus, and Differential Equations.</li>
+                    </ul>
                 </div>
-            </div>
+            </article>
 
-                        <div class="content" id="quiz pg">
+            <article class="content" id="quiz-pg">
                 <div class="text">
                     <p class="Eventname">Quiz PG</p>
-                    <p style="font-weight: bold;">
-                        Winning Prizes: Medals, Certificates, and Gift hamper<br>
-                        Participation: Teams <br>
-                        <i>Rules:</i>
-                    </p>
                     <p>
-                    <ul style="margin-left: 25px;">
-                        <li> One team per college is permitted and each team shall consist of three participants.
-                        <li> Each team may include at most two final year students.
-                         <li>Topics are Real Analysis, Abstract Algebra, Topology, Linear Algebra, Complex
-                             Analysis, Functional Analysis.</li>
-                    </ul>
+                        <strong>Winning Prizes:</strong> Medals, Certificates, and Gift hamper<br>
+                        <strong>Participation:</strong> Teams<br>
+                        <em>Rules:</em>
                     </p>
+                    <ul style="margin-left: 25px;">
+                        <li>One team per college is permitted and each team shall consist of three participants.</li>
+                        <li>Each team may include at most two final year students.</li>
+                        <li>Topics: Real Analysis, Abstract Algebra, Topology, Linear Algebra, Complex Analysis, Functional Analysis.</li>
+                    </ul>
                 </div>
-            </div>
+            </article>
 
-            <div class="content" id="3D Modelling">
+            <article class="content" id="3d-modelling">
                 <div class="text">
-                    <p class="Eventname">3D Modelling </p>
-                    <p style="font-weight: bold;">
-                        Winning Prizes: Medals, Certificates, and Gift hamper<br>
-                        Participation: Team <br>
-                        <i>Rules:</i>
-                    </p>
+                    <p class="Eventname">3D Modelling</p>
                     <p>
-                    <ul style="margin-left: 25px;">
-                        <li> The theme of the model is anything related to mathematics.
-                        <li> Two teams (UG or PG) per college are permitted.
-                        <li> Each team shall consist of two participants.
-                        <li> Each team should exhibit only one model.
-                        <li> The time allotment : 6 min ( 4 min for explanation + 2 minutes for interaction )
-                        <li> Participants must bring all required materials on their own.
-                      </li>
-                    </ul>
+                        <strong>Winning Prizes:</strong> Medals, Certificates, and Gift hamper<br>
+                        <strong>Participation:</strong> Team<br>
+                        <em>Rules:</em>
                     </p>
+                    <ul style="margin-left: 25px;">
+                        <li>The theme of the model is anything related to mathematics.</li>
+                        <li>Two teams (UG or PG) per college are permitted.</li>
+                        <li>Each team shall consist of two participants.</li>
+                        <li>Each team should exhibit only one model.</li>
+                        <li>Time allotment: 6 min (4 min for explanation + 2 minutes for interaction).</li>
+                        <li>Participants must bring all required materials on their own.</li>
+                    </ul>
                 </div>
-            </div>
+            </article>
 
             <div class="rule-card">
-            <div class="rule-card-content">
-                <h3>Rule Book</h3>
-                  <p>Please read the official guidelines and regulations carefully before registering for the event.</p>
-                      <a href="Rule_Book_Exponentia.pdf" download="Event_Rule_Book" class="download-btn">
-                          Download Rule Book
-                     </a>
-              </div>
-           </div>
-        </div>
-
+                <div class="rule-card-content">
+                    <h3>Rule Book</h3>
+                    <p>Please read the official guidelines and regulations carefully before registering for the event.</p>
+                    <a href="Rule_Book_Exponentia.pdf" download="Event_Rule_Book" class="download-btn">
+                        Download Rule Book
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -175,15 +163,15 @@
             <div class="footer-column">
                 <h3>Social Media</h3>
                 <ul>
-                    <li><a href="https://www.facebook.com/share/1DDD2s5rnV/" target="_blank">Facebook</a></li>
-                    <li><a href="https://www.linkedin.com/company/department-of-mathematics-nit-tiruchirappalli/" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://www.instagram.com/exponentia.nitt?igsh=NGhvajZob2hkdGpi" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/share/1DDD2s5rnV/" target="_blank" rel="noopener">Facebook</a></li>
+                    <li><a href="https://www.linkedin.com/company/department-of-mathematics-nit-tiruchirappalli/" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/exponentia.nitt?igsh=NGhvajZob2hkdGpi" target="_blank" rel="noopener">Instagram</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="https://forms.gle/CX3kpBeyUKQnbPbz8" target="_blank">Registration</a></li>
+                    <li><a href="https://forms.gle/CX3kpBeyUKQnbPbz8" target="_blank" rel="noopener">Registration</a></li>
                     <li><a href="help.html" target="_blank">Contact us</a></li>
                 </ul>
             </div>
