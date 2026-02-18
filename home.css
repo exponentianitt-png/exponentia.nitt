@@ -1,524 +1,489 @@
 /* =========================================
-   1. THEME VARIABLES (Updated for Glass Look)
+   1. THEME VARIABLES
    ========================================= */
 :root {
-    /* Main Colors */
-    --bg-main: #0a0e17;           /* Deep Space Blue Background */
-    
-    /* Sidebar Background */
-    --sidebar-bg: rgba(20, 25, 40, 0.25); 
-    
-    --text-primary: #ffffff;      /* Pure White Text */
-    --text-secondary: #a0aec0;    /* Grey Text */
-    
-    /* Neon Accents */
-    --accent-clr: #00f2ff;        /* Neon Cyan */
-    --accent-glow: rgba(0, 242, 255, 0.6); /* Glowing effect */
-    --gradient-btn: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
-    
-    /* Glassmorphism */
-    --glass-bg: rgba(20, 25, 40, 0.4); 
-    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-    --line-clr: #1f293a;
+  --bg-main: #0a0e17;
+  --sidebar-bg: rgba(20, 25, 40, 0.25);
+  --text-primary: #ffffff;
+  --text-secondary: #a0aec0;
+  --accent-clr: #00f2ff;
+  --accent-glow: rgba(0, 242, 255, 0.6);
+  --gradient-btn: linear-gradient(90deg, #00c6ff, #0072ff);
+  --glass-bg: rgba(20, 25, 40, 0.4);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --line-clr: #1f293a;
+  --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.37);
+  --shadow-glow: 0 0 20px var(--accent-glow);
 }
 
-/* 1. Apply the background to the BODY so it covers everything */
+/* =========================================
+   2. BASE STYLES
+   ========================================= */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100vh; 
-    
-    /* Updated path */
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('event_back.jpeg');
-    
-    background-size: cover;       
-    background-position: center;  
-    background-attachment: fixed; 
-    background-repeat: no-repeat; 
+  width: 100%;
+  min-height: 100vh;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+    url('event_back.jpeg') center/cover fixed no-repeat;
 }
 
-/* 2. Clean up the MAIN tag so it doesn't conflict */
 main {
-    width: 100%;
-    height: auto;
-    background: transparent; 
+  width: 100%;
+  background: transparent;
 }
 
-/* CRITICAL FIX: Images will never overflow their container */
 img, svg {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 h1, h2, h3 {
-    font-family: 'Days One', sans-serif;
-    color: var(--text-primary);
-    text-shadow: 0 0 15px rgba(0, 242, 255, 0.2); 
-    margin: 0; 
-    padding-bottom: 10px;
+  font-family: 'Days One', sans-serif;
+  color: var(--text-primary);
+  text-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+  padding-bottom: 10px;
 }
 
 /* =========================================
-   TIMER
+   3. TIMER
    ========================================= */
 .timer-card {
-    background: rgba(255, 255, 255, 0.1); 
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2); 
-    border-radius: 20px;
-    padding: 2rem;
-    margin: 20px auto;
-    width: fit-content;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 20px auto;
+  width: fit-content;
+  box-shadow: var(--shadow-dark);
 }
 
 .timer-grid {
-    display: flex;
-    gap: 25px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
 }
 
 .time-segment {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
 }
 
 .time-segment span {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #ffffff;
-    font-family: 'Courier New', Courier, monospace; 
+  font: bold 3rem 'Courier New', Courier, monospace;
+  color: #fff;
 }
 
 .time-segment .label {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #e8eaed;
-    margin-top: 5px;
-}
-
-@media (max-width: 600px) {
-    .timer-grid { gap: 10px; }
-    .time-segment span { font-size: 1.8rem; }
-    .time-segment { min-width: 60px; }
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #e8eaed;
+  margin-top: 5px;
 }
 
 /* =========================================
-   3. SIDEBAR NAVIGATION (Frosted Glass)
+   4. SIDEBAR NAVIGATION
    ========================================= */
 .sidebar {
-    background: var(--sidebar-bg);
-    backdrop-filter: blur(15px);        
-    -webkit-backdrop-filter: blur(15px);
-    border-right: 1px solid rgba(255, 255, 255, 0.1); 
-    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3); 
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 250px; 
-    padding-top: 20px;
-    z-index: 1000;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 250px;
+  padding-top: 20px;
+  background: var(--sidebar-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-right: var(--glass-border);
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar-header {
-    padding: 20px 25px;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--text-primary);
-    letter-spacing: 1px;
-    text-shadow: 0 0 15px var(--accent-glow);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+  padding: 20px 25px;
+  margin-bottom: 20px;
+  font: bold 1.5rem 'Days One', sans-serif;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  text-shadow: 0 0 15px var(--accent-glow);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .sidebar a {
-    display: flex;
-    align-items: center;
-    padding: 15px 25px;
-    text-decoration: none;
-    font-family: 'Days One', sans-serif;
-    font-size: 1.1rem;
-    color: var(--text-secondary); 
-    transition: all 0.3s ease;
-    background: transparent;
-    border-left: 3px solid transparent; 
+  display: flex;
+  align-items: center;
+  padding: 15px 25px;
+  font: 1.1rem 'Days One', sans-serif;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
 }
 
-.sidebar a i, 
-.sidebar a svg {
-    margin-right: 15px;
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-    transition: color 0.3s ease;
+.sidebar a :is(i, svg) {
+  margin-right: 15px;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  transition: color 0.3s;
 }
 
-.sidebar a:hover,
-.sidebar a.active {
-    color: #ffffff; 
-    background: linear-gradient(90deg, rgba(0, 242, 255, 0.15) 0%, transparent 100%);
-    border-left: 3px solid var(--accent-clr); 
-    text-shadow: 0 0 10px var(--accent-clr); 
+.sidebar a:is(:hover, .active) {
+  color: #fff;
+  background: linear-gradient(90deg, rgba(0, 242, 255, 0.15), transparent);
+  border-left-color: var(--accent-clr);
+  text-shadow: 0 0 10px var(--accent-clr);
 }
 
-.sidebar a:hover i,
-.sidebar a.active i {
-    color: var(--accent-clr); 
-    filter: drop-shadow(0 0 8px var(--accent-clr));
+.sidebar a:is(:hover, .active) :is(i, svg) {
+  color: var(--accent-clr);
+  filter: drop-shadow(0 0 8px var(--accent-clr));
 }
 
 .main-content {
-    margin-left: 250px; 
-    transition: margin-left 0.3s ease;
-    width: calc(100% - 250px); 
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  transition: margin-left 0.3s;
 }
 
 /* =========================================
-   4. LAYOUT UTILITIES
+   5. LAYOUT UTILITIES
    ========================================= */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    padding: 0 10px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 0 10px;
 }
 
 .center-svg {
-    max-width: 50%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    filter: drop-shadow(0 0 10px var(--accent-glow)); 
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 0 10px var(--accent-glow));
 }
 
 .header {
-    width: 100%;
-    height: 80px; 
-    display: flex;
-    flex-direction: row;
-    align-items: center; 
-    justify-content: flex-start;
-    padding-left: 20px;
-    background: linear-gradient(to bottom, rgba(10, 14, 23, 0.8), transparent);
-    position: relative;
-    z-index: 10;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  padding-left: 20px;
+  background: linear-gradient(to bottom, rgba(10, 14, 23, 0.8), transparent);
+  position: relative;
+  z-index: 10;
 }
 
 .nit_logo img,
 .dep_logo img {
-    max-height: 100px; 
-    width: auto;
-    margin-right: 15px;
-    margin-top: 75px;
-    filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
+  max-height: 100px;
+  width: auto;
+  margin: 75px 15px 0 0;
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
 }
 
 /* =========================================
-   5. BUTTONS (Modern & Glowing)
+   6. BUTTONS
    ========================================= */
 .button {
-    background: var(--gradient-btn);
-    color: #ffffff;
-    text-decoration: none;
-    padding: 14px 35px;
-    border-radius: 50px; 
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin-top: 45px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 0 20px var(--accent-glow); 
-    transition: all 0.3s ease-in-out;
-    display: inline-block;
+  display: inline-block;
+  background: var(--gradient-btn);
+  color: #fff;
+  padding: 14px 35px;
+  border-radius: 50px;
+  font: bold 1.1rem sans-serif;
+  margin-top: 45px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-glow);
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .button:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 0 35px var(--accent-clr);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 35px var(--accent-clr);
 }
 
 /* =========================================
-   6. SECTIONS & BACKGROUNDS
+   7. SECTIONS
    ========================================= */
-
-/* Hero Section Background */
 #home-main {
-    background: radial-gradient(circle at center, rgba(0, 242, 255, 0.1) 0%, var(--bg-main) 80%), 
-                url('pexels-sheenawood-574115.png'); 
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh; 
+  min-height: 100vh;
+  background: 
+    radial-gradient(circle at center, rgba(0, 242, 255, 0.1) 0%, var(--bg-main) 80%), 
+    url('pexels-sheenawood-574115.png') center/cover;
 }
 
-/* About Us Section */
 #aboutus {
-    background: linear-gradient(rgba(10, 14, 23, 0.5), rgba(10, 14, 23, 0.5)), 
-                url('math_dep.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; 
-    padding: 60px 20px;
-    border-top: 1px solid var(--line-clr);
-    border-bottom: 1px solid var(--line-clr);
+  padding: 60px 20px;
+  background: 
+    linear-gradient(rgba(10, 14, 23, 0.5), rgba(10, 14, 23, 0.5)), 
+    url('math_dep.jpg') center/cover fixed no-repeat;
+  border-block: 1px solid var(--line-clr);
 }
 
-/* Sponsors Section */
 #sponsors {
-    background: linear-gradient(to bottom, var(--bg-main), rgba(0,0,0,0.6)),
-                url("Sponsor_back.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 50px 0;
+  padding: 50px 0;
+  background: 
+    linear-gradient(to bottom, var(--bg-main), rgba(0,0,0,0.6)),
+    url("Sponsor_back.png") center/cover no-repeat;
 }
 
 /* =========================================
-   7. PARTNERS & LOGOS
+   8. PARTNERS & LOGOS
    ========================================= */
 .title-partner h1 {
-    margin-bottom: 60px;
-    font-size: 3vw;
-    padding-top: 20px;
-    color: var(--accent-clr);
+  padding-top: 20px;
+  margin-bottom: 60px;
+  font-size: 3vw;
+  color: var(--accent-clr);
 }
 
 .tenali-logo {
-    width: 100%;
-    max-width: 400px; 
-    height: auto;
-    display: block;
-    margin: 0 auto 70px auto;
-    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.15));
+  width: 100%;
+  max-width: 400px;
+  display: block;
+  margin: 0 auto 70px;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.15));
 }
 
 .image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    max-width: 1200px; 
-    margin: 0 auto;
-    width: 100%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin-inline: auto;
 }
 
 .image-container img {
-    max-width: 250px;
-    height: auto;
-    margin-bottom: 30px;
-    transition: transform 0.3s ease;
-    filter: grayscale(80%); 
-    opacity: 0.8;
+  max-width: 250px;
+  margin-bottom: 30px;
+  filter: grayscale(80%);
+  opacity: 0.8;
+  transition: all 0.3s;
 }
 
 .image-container img:hover {
-    filter: grayscale(0%); 
-    transform: scale(1.1);
-    opacity: 1;
+  filter: grayscale(0);
+  opacity: 1;
+  transform: scale(1.1);
 }
 
-.associate-partners h1 { font-size: 2.5vw; padding-top: 20px; }
-.Recognition-partners h1 { font-size: 1.7vw; padding-top: 20px; }
+:is(.associate-partners, .Recognition-partners) h1 {
+  padding-top: 20px;
+}
+
+.associate-partners h1 { font-size: 2.5vw; }
+.Recognition-partners h1 { font-size: 1.7vw; }
 
 /* =========================================
-   8. SPEAKERS (Glassmorphism Cards)
+   9. SPEAKERS
    ========================================= */
 .speaker {
-    padding: 40px 20px;
-    margin-top: 50px;
+  padding: 40px 20px;
+  margin-top: 50px;
 }
 
 .speakerhead {
-    display: flex;
-    width: 100%;
-    font-size: 3rem; 
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
-    color: var(--accent-clr);
-    text-transform: uppercase;
-    letter-spacing: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 50px;
+  font-size: 3rem;
+  color: var(--accent-clr);
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.spcontainer1, .spcontainer2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 40px auto;
-    max-width: 1100px; 
-    width: 100%; 
-    padding: 30px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: var(--glass-border);
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+.spcontainer1,
+.spcontainer2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1100px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 30px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--glass-border);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 .spcontainer1 { flex-direction: row; }
 .spcontainer2 { flex-direction: row-reverse; }
 
-.spcontainer1 .speakertex1, 
-.spcontainer2 .speakertext2 {
-    width: 60%;
-    padding: 0 40px;
-    text-align: left;
-    color: #e2e8f0;
-    font-size: 1.1rem;
-    line-height: 1.6;
+:is(.spcontainer1, .spcontainer2) :is(.speakertex1, .speakertext2) {
+  width: 60%;
+  padding-inline: 40px;
+  text-align: left;
+  color: #e2e8f0;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-.spcontainer1 .speakerimg1,
-.spcontainer2 .speakerimg2 {
-    width: 40%;
-    display: flex;
-    justify-content: center;
+:is(.spcontainer1, .spcontainer2) :is(.speakerimg1, .speakerimg2) {
+  width: 40%;
+  display: flex;
+  justify-content: center;
 }
 
-.spcontainer1 img,
-.spcontainer2 img {
-    width: 100%;
-    max-width: 280px;
-    border-radius: 15px;
-    border: 2px solid var(--accent-clr);
-    box-shadow: 0 0 25px rgba(0, 242, 255, 0.15);
+:is(.spcontainer1, .spcontainer2) img {
+  width: 100%;
+  max-width: 280px;
+  border-radius: 15px;
+  border: 2px solid var(--accent-clr);
+  box-shadow: 0 0 25px rgba(0, 242, 255, 0.15);
 }
 
 /* =========================================
-   9. RESPONSIVE DESIGN (Mobile)
+   10. RESPONSIVE DESIGN
    ========================================= */
 @media (max-width: 800px) {
-    .main-content {
-        margin-left: 0;
-        width: 100%;
-        padding-bottom: 90px; 
-    }
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding-bottom: 90px;
+  }
 
-    .sidebar {
-        width: 100%; 
-        height: auto; 
-        position: fixed; 
-        bottom: 0; 
-        top: auto; 
-        left: 0;
-        background: rgba(10, 14, 23, 0.98);
-        backdrop-filter: blur(20px);
-        border-right: none;
-        border-top: 1px solid rgba(255, 255, 255, 0.2); 
-        flex-direction: row; 
-        justify-content: space-around; 
-        align-items: center;
-        padding: 10px 0;
-        z-index: 9999; 
-    }
+  .sidebar {
+    inset: auto 0 0;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    background: rgba(10, 14, 23, 0.98);
+    backdrop-filter: blur(20px);
+    border-right: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 9999;
+  }
 
-    .sidebar-header {
-        display: none; 
-    }
+  .sidebar-header {
+    display: none;
+  }
 
-    .sidebar a {
-        padding: 5px;
-        font-size: 0.75rem; 
-        flex-direction: column; 
-        text-align: center;
-        border-left: none; 
-        width: 100%;
-    }
-    
-    .sidebar a i, .sidebar a svg {
-        margin-right: 0;
-        margin-bottom: 5px;
-        font-size: 1.4rem; 
-    }
+  .sidebar a {
+    flex-direction: column;
+    width: 100%;
+    padding: 5px;
+    font-size: 0.75rem;
+    text-align: center;
+    border-left: none;
+  }
 
-    .sidebar a:hover,
-    .sidebar a.active {
-        border-left: none;
-        background: transparent; 
-        color: var(--accent-clr);
-    }
-    
-    .center-svg {
-        max-width: 90%; 
-    }
+  .sidebar a :is(i, svg) {
+    margin: 0 0 5px;
+    font-size: 1.4rem;
+  }
 
-    .title-partner h1 { 
-        font-size: 1.8rem !important; 
-        margin-bottom: 30px; 
-    }
-    
-    .associate-partners h1,
-    .Recognition-partners h1 { 
-        font-size: 1.4rem; 
-    }
+  .sidebar a:is(:hover, .active) {
+    border-left: none;
+    background: transparent;
+    color: var(--accent-clr);
+  }
 
-    .button {
-        margin-top: 25px;
-        width: 80%; 
-        padding: 12px 0;
-        font-size: 1rem;
-    }
+  .center-svg {
+    max-width: 90%;
+  }
 
-    .speakerhead { 
-        font-size: 2rem; 
-        margin: 30px 0; 
-        text-align: center;
-    }
+  .title-partner h1 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
 
-    .spcontainer1, .spcontainer2 {
-        flex-direction: column !important; 
-        padding: 20px;
-        margin: 20px auto;
-        width: 90%; 
-    }
+  :is(.associate-partners, .Recognition-partners) h1 {
+    font-size: 1.4rem;
+  }
 
-    .spcontainer1 .speakerimg1,
-    .spcontainer2 .speakerimg2 {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    
-    .spcontainer1 img,
-    .spcontainer2 img {
-        max-width: 200px; 
-    }
+  .button {
+    width: 80%;
+    margin-top: 25px;
+    padding: 12px 0;
+    font-size: 1rem;
+  }
 
-    .spcontainer1 .speakertex1,
-    .spcontainer2 .speakertext2 {
-        width: 100%;
-        padding: 0;
-        text-align: center;
-        font-size: 1rem;
-    }
-    
-    .header { 
-        padding-left: 10px; 
-        height: 60px; 
-    }
-    
-    .nit_logo img, .dep_logo img {
-        max-height: 40px;
-        margin-right: 10px;
-    }
-    
-    .image-container img {
-        max-width: 150px; 
-        margin: 10px;
-    }
+  .speakerhead {
+    margin: 30px 0;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .spcontainer1,
+  .spcontainer2 {
+    flex-direction: column;
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  :is(.spcontainer1, .spcontainer2) :is(.speakerimg1, .speakerimg2) {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  :is(.spcontainer1, .spcontainer2) img {
+    max-width: 200px;
+  }
+
+  :is(.spcontainer1, .spcontainer2) :is(.speakertex1, .speakertext2) {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .header {
+    height: 60px;
+    padding-left: 10px;
+  }
+
+  .nit_logo img,
+  .dep_logo img {
+    max-height: 40px;
+    margin: 0 10px 0 0;
+  }
+
+  .image-container img {
+    max-width: 150px;
+    margin: 10px;
+  }
+
+  .timer-grid {
+    gap: 10px;
+  }
+
+  .time-segment {
+    min-width: 60px;
+  }
+
+  .time-segment span {
+    font-size: 1.8rem;
+  }
 }
